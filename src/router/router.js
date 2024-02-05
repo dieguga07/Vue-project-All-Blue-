@@ -4,27 +4,27 @@ const routes = [
 
     {
         path: '/',
-        component: () => import("../pages/Home.vue"),
+        component: () => import("../modulos/initPart/pages/Home.vue"),
     },
     {
         path: '/login',
-        component: () => import("../pages/Login.vue"),
+        component: () => import("../modulos/initPart/pages/Login.vue"),
     },
     {
         path: '/register',
-        component: () => import("../pages/Register.vue"),
+        component: () => import("../modulos/initPart/pages/Register.vue"),
     },
     {
         path: '/products',
-        component: () => import("../pages/Products.vue"),
+        component: () => import("../modulos/mainPart/pages/Products.vue"),
     },
     {
         path: '/user',
-        component: () => import("../pages/User.vue"),
+        component: () => import("../modulos/mainPart/pages/User.vue"),
     },
     {
         path: '/:pathMatch(.*)*',
-        component: () => import("../pages/NotFound.vue"),
+        component: () => import("../modulos/mainPart/pages/NotFound.vue"),
     },
    
 ]
