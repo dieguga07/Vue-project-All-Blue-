@@ -97,7 +97,6 @@ export default{
   padding-bottom: 5px;
 }
 
-  
 
 .register-form button{
   background-color: rgba(191, 204, 223, 1);

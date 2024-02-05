@@ -34,7 +34,7 @@ export default{
             <section class="contenedor_contacto">
 
                 <ul>
-                    <li>Contact Us</li>
+                    <li> <router-link to="/contact" class="nav-link" id="contact">Contact US</router-link> </li>
                     <li>News</li>
                     <li>About</li>
                     <li>Our Team</li>
@@ -125,6 +125,14 @@ footer p{
     width: 500px;
     list-style: none;
     
+}
+
+
+#contact{
+
+    color: white;
+    list-style: none;
+    text-decoration: none;
 }
 
 </style>

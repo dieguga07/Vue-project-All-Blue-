@@ -51,7 +51,7 @@ export default{
         this.userMessage = "Todo OK"
         this.validUser = true
        },
-
+       
        checkPassword(){
         if(this.password.trim() === "" ){
           this.passwordMessage = "Este campo no puede estar vacio"
@@ -89,16 +89,20 @@ export default{
             <div class="login-input">
 
                 <label for="user" class="login-label">User</label>
+                 <!-- Con v-model hacemos un enlazado bidireccional de este input con la variable user -->
                 <input v-model="user"  type="text" id="user" name="user" required>
+                <!-- Segun la validez del usuario , establecemos una clase u otra -->
                 <p :class=" validUser ? 'accept-message' : 'error-message' ">{{ userMessage }}</p>
         
                 <label for="password" class="login-label">Password</label>
+                <!-- Con v-model hacemos un enlazado bidireccional de este input con la variable password -->
                 <input v-model="password"  type="password" id="password" name="password" required>
+                <!-- Segun la validez de password , establecemos una clase u otra -->
                 <p  :class=" validPassword ? 'accept-message' : 'error-message' " >{{ passwordMessage }}</p>
             </div>
             
             <button @click="sendForm">Login</button>
-        
+            
             <p class="login-end">Not a member yet? <router-link to="/register" class="nav-link" id="registro">Sign up now</router-link></p>
 
         </form>
@@ -110,7 +114,9 @@ export default{
 <style scoped>
 
 @import url('https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&display=swap');
+
 @import url('https://fonts.cdnfonts.com/css/sansation');
+
   * {
     
     margin: 0;

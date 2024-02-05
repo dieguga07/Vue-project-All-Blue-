@@ -124,7 +124,7 @@ main{
     font-size: 20px;
     outline: none;
 }
-
+ZZZ
 
 .contenedor_categorias{
     display: flex;

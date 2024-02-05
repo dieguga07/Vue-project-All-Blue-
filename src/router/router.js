@@ -23,6 +23,10 @@ const routes = [
         component: () => import("../modulos/mainPart/pages/User.vue"),
     },
     {
+        path: '/contact',
+        component: () => import("../modulos/mainPart/pages/Contact.vue"),
+    },
+    {
         path: '/:pathMatch(.*)*',
         component: () => import("../modulos/mainPart/pages/NotFound.vue"),
     },
