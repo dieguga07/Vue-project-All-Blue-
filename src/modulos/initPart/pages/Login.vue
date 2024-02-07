@@ -20,6 +20,7 @@ export default{
         validUser:false,
         userMessage: "" ,
         passwordMessage: "" ,
+
         } 
     },
 
@@ -63,11 +64,11 @@ export default{
     }, 
     watch: {
     user: function () {
-      this.checkUser();
+      this.checkUser()
     },
 
     password: function () {
-      this.checkPassword();
+      this.checkPassword()
     },
 
   },
@@ -86,20 +87,21 @@ export default{
         <form class="login-form">
             <p class="login-title">Login</p>
         
-            <div class="login-input">
+            <article class="login-input">
 
                 <label for="user" class="login-label">User</label>
                  <!-- Con v-model hacemos un enlazado bidireccional de este input con la variable user -->
                 <input v-model="user"  type="text" id="user" name="user" required>
                 <!-- Segun la validez del usuario , establecemos una clase u otra -->
-                <p :class=" validUser ? 'accept-message' : 'error-message' ">{{ userMessage }}</p>
+                <span :class=" validUser ? 'accept-message' : 'error-message' ">{{ userMessage }}</span>
         
                 <label for="password" class="login-label">Password</label>
                 <!-- Con v-model hacemos un enlazado bidireccional de este input con la variable password -->
                 <input v-model="password"  type="password" id="password" name="password" required>
                 <!-- Segun la validez de password , establecemos una clase u otra -->
-                <p  :class=" validPassword ? 'accept-message' : 'error-message' " >{{ passwordMessage }}</p>
-            </div>
+                <span  :class=" validPassword ? 'accept-message' : 'error-message' " >{{ passwordMessage }}</span>
+
+            </article>
             
             <button @click="sendForm">Login</button>
             
@@ -130,27 +132,29 @@ export default{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 5%;
-    
+    height: 100vh;
+
   }
 
+
+
+
   .login-title{
-    font-size: 50px;
+    font-size: 5.5vh;
     font-family: 'Sansation', sans-serif;
     font-weight: 100;
   }
   
   .login-form {
   width: 450px;
-  height: 600px;
-  padding: 20px;
+  min-height: 550px;
+  padding: 4vh;
   border-radius: 25px;
   box-shadow: 6px 7px 40px rgba(0, 0, 0, 0.5),10px 10px 4px rgba(0, 0, 0, 0.25);
   text-align: center;
-  padding-bottom: 20px;
+ 
 }
 
-  
 
 .login-form button{
   background-color: rgba(191, 204, 223, 1);
@@ -158,17 +162,18 @@ export default{
   height: 54px;
   border-radius: 25px; 
   font-size: 20px;
+  margin: 0 auto;
   transition: background-color 0.zs ease;
 }
 
-  .login-input {
+.login-input {
     display: flex;
     flex-direction: column;
     gap: 10px;
     padding: 20px;
     justify-content: start;
     transition: background-color 0.3s ease;
-  }
+}
 
 .login-input input {
     border: none;

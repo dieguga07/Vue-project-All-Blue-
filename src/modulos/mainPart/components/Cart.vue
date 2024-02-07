@@ -15,8 +15,48 @@ export default{
 
 <template>
 
+<section class="contendor_cards">
+
+<div>
+
+    <img src="" alt="">
+    <div>
+        <p><a href=""></a></p>
+    </div>
+
+</div>
 
 
+<div>
+
+    <img src="" alt="">
+    <div>
+        <p><a href=""></a></p>
+    </div>
+
+</div>
+
+
+<div>
+
+    <img src="" alt="">
+    <div>
+        <p><a href=""></a></p>
+    </div>
+
+</div>
+
+
+<div>
+
+    <img src="" alt="">
+    <div>
+        <p><a href=""></a></p>
+    </div>
+
+</div>
+
+</section>
   
 </template>
 
@@ -29,5 +69,7 @@ export default{
     box-sizing: border-box;
 }
 
-
+.contenedor_cards{
+    display: flex;
+}
 </style>

@@ -3,10 +3,11 @@
 import Navbar from "../components/Navbar.vue"
 import Footer from "../components/Footer.vue"
 import Carrusel from "../components/Carrusel.vue"
+import Cart from "../components/Cart.vue"
 
 export default{
 
-components:{Navbar,Footer,Carrusel}
+components:{Navbar,Footer,Carrusel,Cart}
 
 
 
@@ -20,6 +21,7 @@ components:{Navbar,Footer,Carrusel}
 <template>
 
 <Navbar></Navbar>
+
 <main>
 
     <Carrusel></Carrusel>
@@ -41,51 +43,9 @@ components:{Navbar,Footer,Carrusel}
         </ul>
     </section>
 
-    <section class="contendor_cards">
-
-        <div>
-
-            <img src="" alt="">
-            <div>
-                <p><a href=""></a></p>
-            </div>
-
-        </div>
-
-
-        <div>
-
-            <img src="" alt="">
-            <div>
-                <p><a href=""></a></p>
-            </div>
-
-        </div>
-
-
-        <div>
-
-            <img src="" alt="">
-            <div>
-                <p><a href=""></a></p>
-            </div>
-
-        </div>
-
-
-        <div>
-
-            <img src="" alt="">
-            <div>
-                <p><a href=""></a></p>
-            </div>
-
-        </div>
-
-    </section>
+   <Cart></Cart>
 
 </main>
-
 
 <Footer></Footer>
   
@@ -105,32 +65,30 @@ main{
 }
 
 
-
-
 .contenedor_buscador{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+    width: 100%;
     
 }
 
 .contenedor_buscador input{
     background-color: rgba(42, 161, 185, 1);
-    width: 500px;
+    min-width: 450px;
     height: 50px;
     border-radius: 25px; 
     border: none;
     font-size: 20px;
     outline: none;
 }
-ZZZ
+
 
 .contenedor_categorias{
-    display: flex;
-    padding: 50px;
-    width: 1092px;
-    margin: auto;
+    
+    width: 100%;
+    padding-top: 3vh;
 }
 
 .contenedor_categorias ul{
@@ -138,19 +96,18 @@ ZZZ
     align-items: center;
     flex-direction: row;
     justify-content: space-evenly;
-    width: 100%;
+    width: 70vw;
     list-style: none;
     border-top: 1px solid #000000; 
     border-bottom: 1px solid #000000; 
     border-left: none; 
     border-right: none;
     font-size: 20px; 
-    height: 150px;
+    height: 100px;
+    margin:  0 auto;
 }
 
-.contenedor_cards{
-    display: flex;
-}
+
 
 
 

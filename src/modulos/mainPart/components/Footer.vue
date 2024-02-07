@@ -60,6 +60,7 @@ export default{
 }
 
 footer{
+    width: 100%;
     background-color: rgb(9, 64, 84); 
     color: white;
     border-top: 1px solid #000000; 
@@ -73,11 +74,12 @@ footer p{
     align-items: center;
     justify-content: center;
     background-color:rgba(2, 22, 30, 1);
-    font-size: 15px;
-    height: 80px;
+    font-size: 2vhx;
+    height: 4vh;
 }
 
 .contenedor_footer{
+    
     padding:50px;
     padding: 0%;
     padding-bottom: 50px;
@@ -101,12 +103,12 @@ footer p{
     justify-content: center;
     width: 100%;
     list-style: none;
-    padding-top: 5rem;
+    padding-top: 3rem;
 }
 
 .contenedor_redes_sociales img {
     margin: 20px;
-    width: 50px;
+    width: 60px;
     height: 60px;
 }
 
@@ -133,6 +135,15 @@ footer p{
     color: white;
     list-style: none;
     text-decoration: none;
+}
+
+
+li{
+    transition: all 0.2s;
+}
+
+li:hover{
+    transform: scale(1.2);
 }
 
 </style>

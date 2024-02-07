@@ -1,4 +1,7 @@
 <script>
+
+import router from '@/router/router';
+
 export default {
 
 data(){
@@ -27,11 +30,12 @@ methods:{
             return (
                 this.confirmContact = "Enviado con exito...",
                 this.user = "",
-                this.text = "",
+                this.text ="",
 
                 setTimeout(() => {
                     this.confirmContact = "" 
-            }, 3000)
+                    //  return router.push("/products")
+            }, 7000)
 
             )
    
@@ -69,11 +73,11 @@ methods:{
 },
 watch:{
     user: function () {
-      this.checkUser();
+      this.checkUser()
     },
 
     text: function () {
-      this.checkText();
+      this.checkText()
     },
 
 },
@@ -96,13 +100,13 @@ watch:{
                 <!-- Con v-model hacemos un enlazado bidireccional de este input con la variable user -->
                 <input v-model="user"  type="text" id="user" name="user" >
                 <!-- Segun la validez del usuario , establecemos una clase u otra -->
-                <p :class=" validUser ? 'accept-message' : 'error-message' ">{{ userMessage }}</p>
+                <span :class=" validUser ? 'accept-message' : 'error-message' ">{{ userMessage }}</span>
 
                 <label for="text" class="contact-label">Text</label>
                 <!-- Con v-model hacemos un enlazado bidireccional de este input con la variable password -->
                 <textarea v-model="text" id="text" name="text" ></textarea>
                 <!-- Segun la validez de password , establecemos una clase u otra -->
-                <p  :class=" validText ? 'accept-message' : 'error-message' " >{{ textMessage }}</p>
+                <span  :class=" validText ? 'accept-message' : 'error-message' " >{{ textMessage }}</span>
             </div>
             
             <button @click="sendForm">Enviar</button>
@@ -116,8 +120,8 @@ watch:{
 
     </section>
 
-    <div class="toast-container">
-        <p class="toast-message">{{ confirmContact }}</p>
+    <div v-bind:class="{'toast-container' : confirmContact != '' }">
+        <p >{{ confirmContact }}</p>
     </div>
         
 </template>
@@ -137,28 +141,30 @@ watch:{
   }
 
   .toast-container {
-  position: fixed;
-  bottom: 20px; /* Ajusta la distancia desde el borde inferior */
-  right: 20px; /* Ajusta la distancia desde el borde derecho */
-  background-color: blueviolet;
-  color: aquamarine;
   z-index: 1;
-  padding: 10px;
-  border-radius: 5px;
-  display: none;
-  animation: fadeInOut 2s ease-in-out forwards;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0vh; 
+  right: 0vh; 
+  width: 300px;
+  height: 150px;
+  background-color: rgb(255, 255, 255);;
+  color: rgb(0, 0, 0);
+  box-shadow: 4px 6px 40px rgba(0, 0, 0, 0.5), 5px 5px 4px rgba(0, 0, 0, 0.25);
+  font-family: "Montagu Slab", serif;
+  border-radius: 25px;
+  
 }
 
-.toast-message {
-  margin: 0;
-}
 
   .contendor-contact {
     font-family: "Montagu Slab", serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 40px;
+    height: 100vh;
     
   }
 
@@ -170,7 +176,7 @@ watch:{
   
   .contact-form {
   width: 450px;
-  height: 650px;
+  min-height: 550px;
   padding: 20px;
   border-radius: 25px;
   box-shadow: 6px 7px 40px rgba(0, 0, 0, 0.5),10px 10px 4px rgba(0, 0, 0, 0.25);

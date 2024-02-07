@@ -26,7 +26,9 @@ export default{
         <ul>
             <li><router-link to="/user" class="nav-link">User</router-link></li>
 
-            <li class="seleccionado"><router-link to="/products" class="nav-link">Products</router-link></li>
+            <li ><router-link to="/products" class="nav-link">Products</router-link></li>
+
+            <!-- class="seleccionado" -->
 
             <li><router-link to="/" class="nav-link">Logout</router-link></li>
         </ul>
@@ -62,6 +64,7 @@ nav {
     border-bottom: 1px solid #000000; 
     border-left: none; 
     border-right: none;
+    justify-content: space-evenly;
 }
 
 nav ul {
@@ -81,6 +84,14 @@ nav img {
 nav ul a {
     color: white;
     text-decoration: none;
+}
+
+li{
+    transition: all 0.2s;
+}
+
+li:hover{
+    transform: scale(1.2);
 }
 
 #luna img {

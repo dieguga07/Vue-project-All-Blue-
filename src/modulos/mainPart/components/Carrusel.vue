@@ -52,8 +52,8 @@ export default{
 
 .carrusel{
     overflow: hidden;
-    width: 100%;
-    max-width: 1310px;
+    height: 40vh;
+    width: 80vw;
 }
 
 .carrusel ul{
@@ -61,7 +61,6 @@ export default{
     padding: 0px;
     width: 400%;
     list-style: none;
-
     animation: slide 50s infinite cubic-bezier(0.55, 0.048, 0.37, 0.92);
 }
 
