@@ -94,6 +94,11 @@ li:hover{
     transform: scale(1.2);
 }
 
+nav ul li  a:hover{
+    color:rgb(197, 176, 149);
+    
+}
+
 #luna img {
     width: 40px;
     height: 40px;

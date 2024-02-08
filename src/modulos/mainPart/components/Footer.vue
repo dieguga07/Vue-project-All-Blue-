@@ -21,12 +21,12 @@ export default{
             <section class="contenedor_redes_sociales">
 
                 <ul>
-                    <li><a href=""><img src="../../../assets/images/redsocial6.png" alt="" srcset=""></a></li>
-                    <li><a href=""><img src="../../../assets/images/redsocial5.png" alt="" srcset=""></a></li>
-                    <li><a href=""><img src="../../../assets/images/redsocial4.png" alt="" srcset=""></a></li>
-                    <li><a href=""><img src="../../../assets/images/redsocial3.png" alt="" srcset=""></a></li>
-                    <li><a href=""><img src="../../../assets/images/redsocial2.png" alt="" srcset=""></a></li>
-                    <li><a href=""><img src="../../../assets/images/redsocial1.png" alt="" srcset=""></a></li>
+                    <li><img src="../../../assets/images/redsocial6.png" alt="" srcset=""></li>
+                    <li><img src="../../../assets/images/redsocial5.png" alt="" srcset=""></li>
+                    <li><img src="../../../assets/images/redsocial4.png" alt="" srcset=""></li>
+                    <li><img src="../../../assets/images/redsocial3.png" alt="" srcset=""></li>
+                    <li><img src="../../../assets/images/redsocial2.png" alt="" srcset=""></li>
+                    <li><img src="../../../assets/images/redsocial1.png" alt="" srcset=""></li>
                 </ul>
 
             </section>
@@ -61,6 +61,7 @@ export default{
 
 footer{
     width: 100%;
+    height: 100%;
     background-color: rgb(9, 64, 84); 
     color: white;
     border-top: 1px solid #000000; 
