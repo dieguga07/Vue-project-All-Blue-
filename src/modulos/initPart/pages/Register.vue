@@ -262,16 +262,6 @@ watch: {
 
 @import url('https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&display=swap');
 @import url('https://fonts.cdnfonts.com/css/sansation');
-  * {
-    
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    
-  }
-
-
-
   
 .banda1{
   

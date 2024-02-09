@@ -46,11 +46,6 @@ export default{
 
 <style scoped> 
 
-*{
-    margin: 0%;
-    padding: 0%;
-    box-sizing: border-box;
-}
 
 nav {
     font-size: 20px;

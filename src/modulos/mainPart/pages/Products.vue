@@ -26,24 +26,162 @@ components:{Navbar,Footer,Carrusel,Cart}
 
     <Carrusel></Carrusel>
 
-    
+    <Cart></Cart>
+
     <section class="contenedor_buscador">
         <form>
             <input type="search">
         </form>
-    </section>
+    </section>    
 
     <section class="contenedor_categorias">
         <ul>
-            <li>Furniture</li>
-            <li>Technology</li>
-            <li>Footwear</li>
-            <li>Clothes</li>
-            <li>Accessories</li>
+            <li><a>Furniture</a></li>
+            <li><a>Technology</a></li>
+            <li><a>Footwear</a></li>
+            <li><a>Clothes</a></li>
+            <li><a>Accessories</a></li>
         </ul>
     </section>
 
-   <Cart></Cart>
+
+    <section class="contenedor-cards">
+        <div class="cards">
+           
+                <div class="card">
+
+                    <img src="../../../assets/images/A23_5G.webp" alt="">
+
+                    <div class="card-title">
+                        <p> Galaxy A23 5G</p>
+                    </div>
+                    
+
+                    <div class="card-btn">
+                        <p>500€</p>
+                        <a > <img src="../../../assets/images/add.png" alt=""></a>
+                    </div>
+                </div>
+           
+            
+
+
+                <div class="card">
+
+                    <img src="../../../assets/images/iPhone_15_Pro.avif" alt="">
+
+                    <div class="card-title">
+                        <p>iPhone 15 Pro</p>
+                    </div>
+
+
+                    <div class="card-btn">
+                        <p>500€</p>
+                        <a > <img src="../../../assets/images/add.png" alt=""></a>
+                    </div>
+                </div>
+
+
+                <div class="card">
+
+                    <img src="../../../assets/images/xiaomi-redmi-note-11-4g.jpg" alt="">
+
+                    <div class="card-title">
+                        <p>Xiaomi 11 4G</p>
+                    </div>
+
+
+                    <div class="card-btn">
+                        <p>500€</p>
+                        <a > <img src="../../../assets/images/add.png" alt=""></a>
+                    </div>
+                </div>
+
+
+                <div class="card">
+
+                    <img src="../../../assets/images/A23_5G.webp" alt="">
+
+                    <div class="card-title">
+                        <p>Hola mundo</p>
+                    </div>
+
+
+                    <div class="card-btn">
+                        <p>500€</p>
+                        <a > <img src="../../../assets/images/add.png" alt=""></a>
+                    </div>
+                </div>
+
+
+
+                <div class="card">
+
+                    <img src="../../../assets/images/A23_5G.webp" alt="">
+
+                    <div class="card-title">
+                        <p>Hola mundo</p>
+                    </div>
+
+
+                    <div class="card-btn">
+                        <p>500€</p>
+                        <a > <img src="../../../assets/images/add.png" alt=""></a>
+                    </div>
+                </div>
+
+
+
+                <div class="card">
+
+                    <img src="../../../assets/images/A23_5G.webp" alt="">
+
+                    <div class="card-title">
+                        <p>Hola mundo</p>
+                    </div>
+
+
+                    <div class="card-btn">
+                        <p>500€</p>
+                        <a > <img src="../../../assets/images/add.png" alt=""></a>
+                    </div>
+                </div>
+
+
+                <div class="card">
+
+                    <img src="../../../assets/images/A23_5G.webp" alt="">
+
+                    <div class="card-title">
+                        <p>Hola mundo</p>
+                    </div>
+
+
+                    <div class="card-btn">
+                        <p>500€</p>
+                        <a > <img src="../../../assets/images/add.png" alt=""></a>
+                    </div>
+                </div>
+
+
+                <div class="card">
+
+                    <img src="../../../assets/images/A23_5G.webp" alt="">
+
+                    <div class="card-title">
+                        <p>Hola mundo</p>
+                    </div>
+
+
+                    <div class="card-btn">
+                        <p>500€</p>
+                        <a > <img src="../../../assets/images/add.png" alt=""></a>
+                    </div>
+                </div>
+            
+        </div>
+    </section>
+  
 
 </main>
 
@@ -54,11 +192,7 @@ components:{Navbar,Footer,Carrusel,Cart}
 
 <style scoped>
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+
 
 main{
     background-color:rgba(197, 176, 149, 1) ;
@@ -66,11 +200,9 @@ main{
 
 
 .contenedor_buscador{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 100%;
+
+    width: fit-content;
+    margin: 0 auto;
     
 }
 
@@ -84,12 +216,72 @@ main{
     outline: none;
 }
 
+.contenedor-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    
+ 
+}
+
+.card {
+    width: 300px; 
+    height: 500px;
+    background-color: white;
+    border-radius: 50px;
+}
+
+.card img{
+    width: 100%;
+    height: 60%;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    
+}
+
+
+.card-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3vh;
+    width: 100%;
+    height: 20%;
+    
+}
+
+
+
+.card-btn{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 20%;
+    background-color: rgba(42, 161, 185, 1);
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    font-size: 3vh;
+   
+    
+}
+
+.cards {
+    display: grid;
+    justify-content: center;
+    justify-items:center;
+    padding-top: 50px;
+    padding-bottom: 200px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 100px;
+    margin-left: 150px;
+    margin-right: 150px;
+   
+}
 
 .contenedor_categorias{
-    
     width: 100%;
-    padding-top: 3vh;
+    padding-top: 3vh;  
 }
+
 
 .contenedor_categorias ul{
     display: flex;

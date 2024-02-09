@@ -53,11 +53,7 @@ export default{
 
 
 <style scoped>
-*{
-    margin: 0%;
-    padding: 0%;
-    box-sizing: border-box;
-}
+
 
 footer{
     width: 100%;

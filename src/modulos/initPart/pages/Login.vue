@@ -204,20 +204,11 @@ export default{
 
 @import url('https://fonts.cdnfonts.com/css/sansation');
 
-  * {
-    
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    
-  }
-  
-
 
 .banda1{
   
   height: 100vh;
-  position: absolute;
+  position: fixed;
   overflow: hidden;
   z-index:-1;
   top: 0;
@@ -226,7 +217,7 @@ export default{
 .banda2{
   
   height: 100vh;
-  position: absolute;
+  position: fixed;
   overflow: hidden;
   z-index:-2;
   top: 0;
@@ -235,7 +226,7 @@ export default{
 .banda3{
   
   height: 100vh;
-  position: absolute;
+  position: fixed;
   overflow: hidden;
   z-index:-3;
   top: 0;

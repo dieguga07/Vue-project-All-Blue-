@@ -1,75 +1,36 @@
 <script>
-export default{
-
-
-
-
-
-
-
-
+export default {
+    
 }
-
 </script>
-
 
 <template>
 
-<section class="contendor_cards">
+   <section class="contenedor-cart">
 
-<div>
+            <img src="../../../assets/images/cart.png" alt="Carrito">
+        
+   </section>
 
-    <img src="" alt="">
-    <div>
-        <p><a href=""></a></p>
-    </div>
-
-</div>
-
-
-<div>
-
-    <img src="" alt="">
-    <div>
-        <p><a href=""></a></p>
-    </div>
-
-</div>
-
-
-<div>
-
-    <img src="" alt="">
-    <div>
-        <p><a href=""></a></p>
-    </div>
-
-</div>
-
-
-<div>
-
-    <img src="" alt="">
-    <div>
-        <p><a href=""></a></p>
-    </div>
-
-</div>
-
-</section>
-  
 </template>
-
 
 <style scoped>
 
-*{
-    margin: 0%;
-    padding: 0%;
-    box-sizing: border-box;
+
+.contenedor-cart{
+    position: sticky; 
+    float: right; 
+    width: 70px;
+    height: 70px; 
+    background-color: rgba(42, 161, 185, 1); 
+    padding: 20px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
 }
 
-.contenedor_cards{
-    display: flex;
+.contenedor-cart img{
+   width: 40px;
+   height: 40px;
 }
+
 </style>

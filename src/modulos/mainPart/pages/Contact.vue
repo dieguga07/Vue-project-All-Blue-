@@ -220,13 +220,6 @@ watch:{
 
 @import url('https://fonts.cdnfonts.com/css/sansation');
 
-  * {
-    
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    
-  }
 
 
 .banda1{
