@@ -160,7 +160,7 @@ watch: {
         <div class="boton-texto">
             <button @click="sendForm">Get started</button>
         
-            <p class="register-end">Already have an account ? <router-link to="/login" class="nav-link" id="registro">Log in now</router-link></p>
+            <p class="register-end">Already have an account ? <router-link to="/public/login" class="nav-link" id="registro">Log in now</router-link></p>
         </div>
             
 
@@ -262,6 +262,7 @@ watch: {
 
 @import url('https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&display=swap');
 @import url('https://fonts.cdnfonts.com/css/sansation');
+
   
 .banda1{
   

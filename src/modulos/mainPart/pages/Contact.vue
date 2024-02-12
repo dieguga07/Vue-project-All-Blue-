@@ -114,7 +114,7 @@ watch:{
            
             
             
-            <p class="contact-end"><router-link to="/products" class="nav-link" id="registro">Go back</router-link></p>
+            <p class="contact-end"><router-link to="/private/products" class="nav-link" id="registro">Go back</router-link></p>
 
         </form>
 

@@ -7,10 +7,29 @@ import Cart from "../components/Cart.vue"
 
 export default{
 
-components:{Navbar,Footer,Carrusel,Cart}
+components:{Navbar,Footer,Carrusel,Cart},
 
+data() {
+    return {
+        products: []
+    }
+},
+mounted(){
+    this.getProducts()
+},
 
+methods:{
+    async getProducts() {
+            try {
+                const respuesta = await fetch("http://localhost:8000/api/products")
+                const data = await respuesta.json()
+                this.products = data
+            } catch (error) {
+                console.error("Error al obtener los productos:", error)
+            }
+        }
 
+},
 
 
 }
@@ -46,141 +65,20 @@ components:{Navbar,Footer,Carrusel,Cart}
 
 
     <section class="contenedor-cards">
-        <div class="cards">
-           
-                <div class="card">
+    <div class="cards">
+        <div class="card" v-for="product in products" :key="product.id">
 
-                    <img src="../../../assets/images/A23_5G.webp" alt="">
-
-                    <div class="card-title">
-                        <p> Galaxy A23 5G</p>
-                    </div>
-                    
-
-                    <div class="card-btn">
-                        <p>500€</p>
-                        <a > <img src="../../../assets/images/add.png" alt=""></a>
-                    </div>
-                </div>
-           
-            
-
-
-                <div class="card">
-
-                    <img src="../../../assets/images/iPhone_15_Pro.avif" alt="">
-
-                    <div class="card-title">
-                        <p>iPhone 15 Pro</p>
-                    </div>
-
-
-                    <div class="card-btn">
-                        <p>500€</p>
-                        <a > <img src="../../../assets/images/add.png" alt=""></a>
-                    </div>
-                </div>
-
-
-                <div class="card">
-
-                    <img src="../../../assets/images/xiaomi-redmi-note-11-4g.jpg" alt="">
-
-                    <div class="card-title">
-                        <p>Xiaomi 11 4G</p>
-                    </div>
-
-
-                    <div class="card-btn">
-                        <p>500€</p>
-                        <a > <img src="../../../assets/images/add.png" alt=""></a>
-                    </div>
-                </div>
-
-
-                <div class="card">
-
-                    <img src="../../../assets/images/A23_5G.webp" alt="">
-
-                    <div class="card-title">
-                        <p>Hola mundo</p>
-                    </div>
-
-
-                    <div class="card-btn">
-                        <p>500€</p>
-                        <a > <img src="../../../assets/images/add.png" alt=""></a>
-                    </div>
-                </div>
-
-
-
-                <div class="card">
-
-                    <img src="../../../assets/images/A23_5G.webp" alt="">
-
-                    <div class="card-title">
-                        <p>Hola mundo</p>
-                    </div>
-
-
-                    <div class="card-btn">
-                        <p>500€</p>
-                        <a > <img src="../../../assets/images/add.png" alt=""></a>
-                    </div>
-                </div>
-
-
-
-                <div class="card">
-
-                    <img src="../../../assets/images/A23_5G.webp" alt="">
-
-                    <div class="card-title">
-                        <p>Hola mundo</p>
-                    </div>
-
-
-                    <div class="card-btn">
-                        <p>500€</p>
-                        <a > <img src="../../../assets/images/add.png" alt=""></a>
-                    </div>
-                </div>
-
-
-                <div class="card">
-
-                    <img src="../../../assets/images/A23_5G.webp" alt="">
-
-                    <div class="card-title">
-                        <p>Hola mundo</p>
-                    </div>
-
-
-                    <div class="card-btn">
-                        <p>500€</p>
-                        <a > <img src="../../../assets/images/add.png" alt=""></a>
-                    </div>
-                </div>
-
-
-                <div class="card">
-
-                    <img src="../../../assets/images/A23_5G.webp" alt="">
-
-                    <div class="card-title">
-                        <p>Hola mundo</p>
-                    </div>
-
-
-                    <div class="card-btn">
-                        <p>500€</p>
-                        <a > <img src="../../../assets/images/add.png" alt=""></a>
-                    </div>
-                </div>
-            
+            <img :src="product.image" :alt="product.name">
+            <div class="card-title">
+                <p>{{ product.name }}</p>
+            </div>
+            <div class="card-btn">
+                <p>{{ product.price }} $</p>
+                <a> <img src="../../../assets/images/add.png" alt="Add to cart"></a>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
   
 
 </main>
@@ -248,7 +146,6 @@ main{
     height: 20%;
     
 }
-
 
 
 .card-btn{

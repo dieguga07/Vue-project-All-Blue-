@@ -24,7 +24,7 @@ export default{
     </ul>
 
     <ul>
-        <li><router-link to="/login" class="nav-link" id="login">Login</router-link> <router-link to="/register" class="nav-link" id="registro">Register</router-link> </li>
+        <li><router-link to="/public/login" class="nav-link" id="login">Login</router-link> <router-link to="/public/register" class="nav-link" id="registro">Register</router-link> </li>
     </ul>
    
 </nav>

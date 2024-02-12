@@ -34,7 +34,7 @@ export default{
 
         if(this.validUser && this.validPassword){
          
-           return router.push("/products")
+           return router.push("/private/products")
            
         }
           
@@ -105,7 +105,7 @@ export default{
             
             <button @click="sendForm">Login</button>
             
-            <p class="login-end">Not a member yet? <router-link to="/register" class="nav-link" id="registro">Sign up now</router-link></p>
+            <p class="login-end">Not a member yet? <router-link to="/public/register" class="nav-link" id="login">Sign up now</router-link></p>
 
         </form>
         

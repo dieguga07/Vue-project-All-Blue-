@@ -24,17 +24,17 @@ export default{
         </ul>
 
         <ul>
-            <li><router-link to="/user" class="nav-link">User</router-link></li>
+            <li><router-link to="/private/user" class="nav-link">User</router-link></li>
 
-            <li ><router-link to="/products" class="nav-link">Products</router-link></li>
+            <li ><router-link to="/private/products" class="nav-link">Products</router-link></li>
 
             <!-- class="seleccionado" -->
 
-            <li><router-link to="/" class="nav-link">Logout</router-link></li>
+            <li><router-link to="/public" class="nav-link">Logout</router-link></li>
         </ul>
 
         <ul>
-            <li id="luna"><a href=""><img src="../../../assets/images/luna.png" alt="Cambiar modo" title="Cambiar modo" ></a></li>
+            <li id="luna"><a><img src="../../../assets/images/luna.png" alt="Cambiar modo" title="Cambiar modo" ></a></li>
         </ul>
 
     </nav>
