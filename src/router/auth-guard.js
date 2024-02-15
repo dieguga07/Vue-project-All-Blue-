@@ -1,4 +1,4 @@
-import { UserContext } from '../modulos/stores/UserContext'
+import { UserContext } from '../stores/UserContext'
 
 const AuthenticationState = () => {
    
