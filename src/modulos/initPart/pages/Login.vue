@@ -3,7 +3,6 @@ import router from '@/router/router';
 
 export default{
 
-
     props:{
       
     },
@@ -32,11 +31,16 @@ export default{
 
         this.checkUser()
 
-        if(this.validUser && this.validPassword){
+        setTimeout(() => {
+
+          if(this.validUser && this.validPassword){
          
-           return router.push("/private/products")
-           
-        }
+            return router.push("/private/products")
+         
+          }  
+
+        }, 1000)
+        
           
        },
 
@@ -74,7 +78,6 @@ export default{
   },
 
 
-
 }
 
 </script>
@@ -86,7 +89,7 @@ export default{
 
         <form class="login-form">
             <p class="login-title">Login</p>
-        
+
             <article class="login-input">
 
                 <label for="user" class="login-label">User</label>
@@ -265,7 +268,7 @@ export default{
 
 .login-form button{
   background-color: rgba(191, 204, 223, 1);
-  width: 257px;
+  width: 70%;
   height: 54px;
   border-radius: 25px; 
   font-size: 20px;
@@ -320,5 +323,21 @@ padding-top: 50px;
   .accept-message {
     color: green;
   }
+
+
+  @media screen and (max-width:480px) {
+    .login-form {
+      min-width: 250px;
+
+    }
+
+    .contendor-login {
+
+    padding: 20px;
+
+  }
+  }
+
+
 
 </style>

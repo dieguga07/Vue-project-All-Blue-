@@ -11,7 +11,9 @@ components:{Navbar,Footer,Carrusel,Cart},
 
 data() {
     return {
-        products: []
+        products: [],
+        loader:true,
+        cartProducts : []
     }
 },
 mounted(){
@@ -26,10 +28,38 @@ methods:{
                 this.products = data
             } catch (error) {
                 console.error("Error al obtener los productos:", error)
+            } finally {
+                this.loader = false
             }
-        }
+        },
 
-},
+        addFavourite(name,price,image,id) {
+            
+            const product = {
+                Pname : name,
+                Pprice: price,
+                Pimage: image,
+                Pid:id,
+                Pcantidad:1,
+            }
+
+            if(!this.cartProducts.some(Newproduct => Newproduct.Pid === product.Pid)){
+                this.cartProducts.push(product)
+            }
+            
+            
+        },
+
+        vaciarCart(){
+
+            this.cartProducts = []
+
+        },
+
+
+    },
+
+   
 
 
 }
@@ -45,13 +75,15 @@ methods:{
 
     <Carrusel></Carrusel>
 
-    <Cart></Cart>
+    
 
-    <section class="contenedor_buscador">
+   <section class="contenedor_buscador">
         <form>
             <input type="search">
         </form>
-    </section>    
+    </section> 
+
+    
 
     <section class="contenedor_categorias">
         <ul>
@@ -65,21 +97,23 @@ methods:{
 
 
     <section class="contenedor-cards">
-    <div class="cards">
+    
         <div class="card" v-for="product in products" :key="product.id">
+            
+            <img class="card-img" :src="product.image ? product.image  : 'https://cdn.icon-icons.com/icons2/3001/PNG/512/default_filetype_file_empty_document_icon_187718.png'" :alt="product.name">
 
-            <img :src="product.image" :alt="product.name">
             <div class="card-title">
                 <p>{{ product.name }}</p>
             </div>
             <div class="card-btn">
-                <p>{{ product.price }} $</p>
-                <a> <img src="../../../assets/images/add.png" alt="Add to cart"></a>
+                <p>{{ product.price }} €</p>
+                <a @click="addFavourite(product.name,product.price,product.image,product.id)"> <img src="../../../assets/images/add.png" alt="Add to cart"></a>
             </div>
         </div>
-    </div>
-</section>
-  
+
+    </section>
+
+    <Cart :cartProducts="cartProducts"  @vaciarCart = "vaciarCart"></Cart>
 
 </main>
 
@@ -98,15 +132,25 @@ main{
 
 
 .contenedor_buscador{
-
-    width: fit-content;
-    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
+   
     
+}
+
+.contenedor_buscador form{
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    width: 60%;
+
 }
 
 .contenedor_buscador input{
     background-color: rgba(42, 161, 185, 1);
-    min-width: 450px;
+    min-width: 60%;
     height: 50px;
     border-radius: 25px; 
     border: none;
@@ -116,24 +160,29 @@ main{
 
 .contenedor-cards {
     display: grid;
-    grid-template-columns: 1fr;
-    
+    justify-content: center;
+    justify-items:center;
+    padding-top: 50px;
+    padding-bottom: 200px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 100px;
+    margin: 0 150px;
  
 }
 
 .card {
-    width: 300px; 
-    height: 500px;
+    min-width: 250px; 
+    min-height: 400px;
     background-color: white;
     border-radius: 50px;
 }
 
-.card img{
+.card-img{
     width: 100%;
     height: 60%;
+    padding: 20px;
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
-    
 }
 
 
@@ -141,7 +190,7 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 3vh;
+    font-size:30px;
     width: 100%;
     height: 20%;
     
@@ -156,23 +205,10 @@ main{
     background-color: rgba(42, 161, 185, 1);
     border-bottom-left-radius: 50px;
     border-bottom-right-radius: 50px;
-    font-size: 3vh;
-   
-    
+    font-size: 30px;
 }
 
-.cards {
-    display: grid;
-    justify-content: center;
-    justify-items:center;
-    padding-top: 50px;
-    padding-bottom: 200px;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 100px;
-    margin-left: 150px;
-    margin-right: 150px;
-   
-}
+
 
 .contenedor_categorias{
     width: 100%;
@@ -197,7 +233,23 @@ main{
 }
 
 
+@media screen and (max-width:616px) {
+    a{
+        font-size: 15px;
+    }
+}
 
 
+@media screen and (max-width:480px) {
+    
+   .contenedor_categorias ul{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 200px;
+    font-size: 30px;
+   }    
+
+}
 
 </style>

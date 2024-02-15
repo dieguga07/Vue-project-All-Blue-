@@ -42,7 +42,7 @@ methods:{
 
     if(this.validUser && this.validPassword && this.validEmail && this.validPhone ){
  
-      return router.push("/products")
+      return router.push("/private/products")
    
     }
   
@@ -324,7 +324,7 @@ watch: {
 
 .register-form button{
   background-color: rgba(191, 204, 223, 1);
-  width: 257px;
+  width: 70%;
   height: 54px;
   border-radius: 25px; 
   font-size: 20px;
@@ -379,6 +379,20 @@ padding-bottom: 20px ;
 
   .accept-message {
     color: green;
+  }
+
+  
+  @media screen and (max-width:480px) {
+    .register-form {
+      min-width: 250px;
+
+    }
+
+    .contendor-register {
+
+    padding: 20px;
+
+  }
   }
 
 </style>

@@ -24,11 +24,11 @@ export default{
         </ul>
 
         <ul>
-            <li><router-link to="/private/user" class="nav-link">User</router-link></li>
+            <li  class="seleccionado_user" ><router-link to="/private/user" class="nav-link">User</router-link></li>
 
-            <li ><router-link to="/private/products" class="nav-link">Products</router-link></li>
+            <li  class="seleccionado_products" ><router-link to="/private/products" class="nav-link">Products</router-link></li>
 
-            <!-- class="seleccionado" -->
+            
 
             <li><router-link to="/public" class="nav-link">Logout</router-link></li>
         </ul>
@@ -99,7 +99,11 @@ nav ul li  a:hover{
     height: 40px;
 }
 
-.seleccionado a{
+.seleccionado_user a{
+    color: rgb(197, 176, 149);
+}
+
+.seleccionado_products a{
     color: rgb(197, 176, 149);
 }
 

@@ -34,7 +34,7 @@ export default{
             <section class="contenedor_contacto">
 
                 <ul>
-                    <li> <router-link to="/contact" class="nav-link" id="contact">Contact US</router-link> </li>
+                    <li> <router-link to="/private/contact" class="nav-link" id="contact">Contact US</router-link> </li>
                     <li>News</li>
                     <li>About</li>
                     <li>Our Team</li>
@@ -57,7 +57,6 @@ export default{
 
 footer{
     width: 100%;
-    height: 100%;
     background-color: rgb(9, 64, 84); 
     color: white;
     border-top: 1px solid #000000; 
@@ -87,8 +86,7 @@ footer p{
     display: flex;
     align-items: center;
     flex-direction: row;
-    justify-content: center;
-    width: 100%;
+    justify-content: space-around;
     height: 10rem;
     margin: 0%;
 }
@@ -98,7 +96,6 @@ footer p{
     align-items: center;
     flex-direction: row;
     justify-content: center;
-    width: 100%;
     list-style: none;
     padding-top: 3rem;
 }
@@ -141,6 +138,59 @@ li{
 
 li:hover{
     transform: scale(1.2);
+}
+
+@media screen and (max-width:620px) {
+    
+    .contenedor_redes_sociales img {
+    margin: 8px;
+
+}      
+.contenedor_footer{
+    padding: 0;
+
+}
+
+.contenedor_redes_sociales{
+    height: 6rem;
+}
+
+}
+
+
+@media screen and (max-width:475px) {
+    
+    .contenedor_redes_sociales img {
+    margin: 6px;
+}    
+
+
+
+
+
+}
+
+@media screen and (max-width:456px) {
+    
+    .contenedor_redes_sociales img {
+    margin: 6px;
+    width: 50px;
+    height: 50px;  
+}      
+
+}
+
+
+@media screen and (max-width:396px) {
+    
+    .contenedor_redes_sociales img {
+    margin: 4px;
+    width: 40px;
+    height: 40px;    
+}     
+
+
+
 }
 
 </style>
