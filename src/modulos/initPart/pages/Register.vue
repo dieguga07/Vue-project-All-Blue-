@@ -1,5 +1,6 @@
 <script>
-import router from '@/router/router'
+import { UserContext } from '@/stores/UserContext'
+import router from '../../../router/router.js'
 
 export default{
 
@@ -22,6 +23,8 @@ data(){
     emailMessage:"",
     phoneMessage:"",
 
+    responseFail:"",
+
     emailRegex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
     phoneRegex:  /^[6789]\d{8}$/
 
@@ -41,11 +44,46 @@ methods:{
     this.checkPhone()
 
     if(this.validUser && this.validPassword && this.validEmail && this.validPhone ){
- 
-      return router.push("/private/products")
-   
+
+      const userStore = UserContext()
+     
+
+      const registerData = {
+        nombre: this.user,
+        email:this.email,
+        phone:this.phone,
+        password:this.password,
+      }
+
+      const configuration = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(registerData)
+        }
+
+      fetch('http://localhost:8000/api/register', configuration)
+      .then(response => {
+        if (response.ok) {
+          return response.json()
+        } else {
+          throw new Error()
+        }
+      })
+      .then( () =>{
+        userStore.setUser(true),
+        router.push("/private/products")
+      })
+      .catch(() => {
+        userStore.setUser(false)
+        this.responseFail = "El usuario o email ya existen"
+
+        setTimeout(() => {
+          this.responseFail = ""
+        }, 5000)
+      })
     }
-  
   },
 
   checkUser(){
@@ -136,6 +174,8 @@ watch: {
         <p class="register-title">Sing up</p>
         
         <div class="register-input">
+
+            <span class="error-message"> {{ responseFail }} </span>
 
             <label for="user" class="register-label">User</label>
             <input v-model="user"  type="text" id="user" name="user" required placeholder="User">

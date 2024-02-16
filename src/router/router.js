@@ -18,7 +18,12 @@ const routes = [
             {
                 path: 'login',
                 component: () => import("../modulos/initPart/pages/Login.vue")
-            }
+            },
+            {
+                path: 'contact',
+                component: () => import("../modulos/initPart/pages/ContactPublic.vue")
+            },
+            
         ]
     },
     {

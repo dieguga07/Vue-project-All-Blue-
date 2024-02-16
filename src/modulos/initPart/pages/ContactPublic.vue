@@ -31,10 +31,10 @@ methods:{
                 this.confirmContact = "Enviado con exito...",
                 this.user = "",
                 this.text ="",
-                
+
                 setTimeout(() => {
                     this.confirmContact = "" 
-                    
+                    //  return router.push("/products")
             }, 7000)
 
             )
@@ -114,7 +114,7 @@ watch:{
            
             
             
-            <p class="contact-end"><router-link to="/private/products" class="nav-link" id="registro">Go back</router-link></p>
+            <p class="contact-end"><router-link to="/public" class="nav-link" id="registro">Go back</router-link></p>
 
         </form>
 

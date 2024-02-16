@@ -3,16 +3,21 @@ export default {
    props: {
     cartProducts: {
       type: Array,
-    }
+    },
+
    },
 
    data() {
       return {
-         
+         compraState:false
       }
    },
 
    methods:{
+
+      compraUser(){
+
+      },
 
       totalPrice(){
          let cartPrice = 0;
@@ -30,11 +35,10 @@ export default {
       },
 
       removeCantidad(product){
-         if(product.Pcantidad > 1){
-            product.Pcantidad -=1
-            
+         if(product.Pcantidad === 1 ){
+          return this.$emit('deleteProduct',product.Pid)
          }
-         
+         product.Pcantidad -=1
       }
    },
 }
@@ -92,13 +96,11 @@ export default {
 
          <ul>
             <li> Precio total : {{ totalPrice() }} €</li>
-            <li> <button @click="" class="cart-btn-comprar"> Comprar </button></li>
+            <li> <button @click="compraUser" class="cart-btn-comprar"> Comprar </button></li>
             <li> <button @click="$emit('vaciarCart')" class="cart-btn-vaciar"> vaciar todo </button> </li>
          </ul>
 
       </div>
-
-   
    
    </section>
 
@@ -120,6 +122,7 @@ export default {
    padding: 20px;
    color: white;
    font-size: 20px;
+   
 }
 
 .cart-btn-cantidad{
@@ -131,6 +134,7 @@ export default {
 .cart-btn-cantidad a{
    padding-left: 10px;
    text-align: center;
+   
 }
 
 .cart-btn-cantidad a img {
@@ -158,8 +162,9 @@ div{
 }
 
 .cart ul li{
-   width: 5%;
+   min-width: 5%;
    text-align: center;
+   
 }
 
 .cart img{
@@ -230,5 +235,6 @@ div{
    }
 
 }
+
 
 </style>

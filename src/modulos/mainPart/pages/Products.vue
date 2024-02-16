@@ -56,10 +56,14 @@ methods:{
 
         },
 
+        deleteProduct(deleteId){
+        this.cartProducts = this.cartProducts.filter((product) => product.Pid !== deleteId);
+        }
+
 
     },
 
-   
+
 
 
 }
@@ -77,11 +81,14 @@ methods:{
 
     
 
-   <section class="contenedor_buscador">
-        <form>
-            <input type="search">
-        </form>
-    </section> 
+    <section class="contenedor_buscador">
+      <form>
+        <div class="search-container">
+          <img src="../../../assets/images/lupa.png" alt="search" class="contenedor_buscador_img">
+          <input type="search" placeholder=" Search....">
+        </div>
+      </form>
+    </section>
 
     
 
@@ -113,7 +120,7 @@ methods:{
 
     </section>
 
-    <Cart :cartProducts="cartProducts"  @vaciarCart = "vaciarCart"></Cart>
+    <Cart :cartProducts="cartProducts"  @vaciarCart = "vaciarCart" @deleteProduct = "deleteProduct"></Cart>
 
 </main>
 
@@ -131,32 +138,46 @@ main{
 }
 
 
-.contenedor_buscador{
+.contenedor_buscador {
     display: flex;
     justify-content: center;
     align-items: center;
- 
-   
     
-}
+  }
 
-.contenedor_buscador form{
-    display: flex; 
+  .contenedor_buscador form {
+    display: flex;
     justify-content: center;
-    align-items: center; 
-    width: 60%;
+    align-items: center;
+    padding-top: 20px;
+  }
 
-}
+  .search-container {
+    position: relative;
+    
+  }
 
-.contenedor_buscador input{
+  .contenedor_buscador_img {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    width: 20px; 
+    height: 20px;
+    cursor: pointer; 
+  }
+
+  input[type="search"] {
     background-color: rgba(42, 161, 185, 1);
-    min-width: 60%;
+    width: 70vw;
     height: 50px;
-    border-radius: 25px; 
+    border-radius: 18px; 
     border: none;
     font-size: 20px;
     outline: none;
-}
+    color: black;
+    padding-left: 40px; 
+  }
 
 .contenedor-cards {
     display: grid;
@@ -167,6 +188,7 @@ main{
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 100px;
     margin: 0 150px;
+
  
 }
 
@@ -251,5 +273,14 @@ main{
    }    
 
 }
+
+@media screen and (max-width:400px){
+    
+  
+  
+
+}
+
+ 
 
 </style>

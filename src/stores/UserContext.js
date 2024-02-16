@@ -8,7 +8,18 @@ export const UserContext = defineStore('userState',{
 
         user:true,
 
-    })
+    }),
+
+
+    //getters  --->  funcionalidades que no cambien  el estado , ejemplo hacer operaciones con el valor 
+
+    actions:{
+
+        setUser(newState) {
+          this.user = newState
+        },
+
+      }
 
 
 })

@@ -1,9 +1,8 @@
 <script>
-
-
+import FooterPublic from '../components/FooterPublic.vue'
 export default{
 
-
+components:{FooterPublic}
 
 
 
@@ -28,6 +27,8 @@ export default{
     </ul>
    
 </nav>
+
+<FooterPublic></FooterPublic>
 
 
 
