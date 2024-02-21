@@ -76,10 +76,10 @@ export default {
 
       <div class="cart">
          <ul >
-            <li>Imagen</li>
-            <li>Nombre</li>
-            <li>Cantidad</li>
-            <li>Precio</li>
+            <li>Image</li>
+            <li>Name</li>
+            <li>Quantity</li>
+            <li>Price</li>
          </ul>
       </div>
 
@@ -95,9 +95,9 @@ export default {
       <div class="cart">
 
          <ul>
-            <li> Precio total : {{ totalPrice() }} €</li>
-            <li> <button @click="compraUser" class="cart-btn-comprar"> Comprar </button></li>
-            <li> <button @click="$emit('vaciarCart')" class="cart-btn-vaciar"> vaciar todo </button> </li>
+            <li> Total price : {{ totalPrice() }} €</li>
+            <li> <button @click="compraUser" class="cart-btn-comprar"> Buy </button></li>
+            <li> <button @click="$emit('vaciarCart')" class="cart-btn-vaciar"> empty all </button> </li>
          </ul>
 
       </div>
@@ -129,6 +129,7 @@ export default {
    display: flex;
    align-items: center;
    justify-content: center;
+  
 }
 
 .cart-btn-cantidad a{
@@ -142,8 +143,15 @@ export default {
   border: none;
   width: 30px;
   height: 30px;
+  
 
 }
+
+.cart-btn-cantidad a img:hover {
+   transform: scale(1.1);
+}
+
+
 
 div{
    padding-top: 40px;
@@ -173,8 +181,14 @@ div{
    border-radius: 50%;
    background-color: white;
    border: 2px solid black;
+   transition:transform 0.4s;
+   
 }
 
+
+.cart img:hover{
+   transform: scale(1.4);
+}
 
 .cart button{
    width: 10vw;

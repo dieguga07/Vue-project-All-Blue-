@@ -20,11 +20,11 @@ export default{
 
             <div class="carrusel">
                 <ul>
-                    <li><img src="../../../assets/images/tennis.jpg" alt=""></li>
-                    <li><img src="../../../assets/images/zapatos.jpg" alt=""></li>
-                    <li><img src="../../../assets/images/soffa.jpg" alt=""></li>
-                    <li><img  src="../../../assets/images/phone.jpg" alt=""></li>
-                    <li> <img  src="../../../assets/images/sunglasses.jpg" alt=""></li>
+                    <img src="../../../assets/images/tennis.jpg" alt="foto_decorativa_1">
+                    <img src="../../../assets/images/zapatos.jpg" alt="foto_decorativa_2">
+                    <img src="../../../assets/images/soffa.jpg" alt="foto_decorativa_3">
+                    <img src="../../../assets/images/phone.jpg" alt="foto_decorativa_4">
+                    <img src="../../../assets/images/sunglasses.jpg" alt="foto_decorativa_5">
                 </ul>   
             </div>
         </section>
@@ -39,6 +39,7 @@ export default{
     display: grid;
     padding: 20px;
     width: 100%;
+   
     place-content: center;
 }
 
@@ -53,16 +54,37 @@ export default{
     padding: 0px;
     width: 400%;
     list-style: none;
+    animation: slide 50s infinite cubic-bezier(0.55, 0.048, 0.37, 0.92);
 }
 
+@keyframes slide {
+    0% {margin-left:0;}
 
+    20% {margin-left:0;}
+
+    25% {margin-left:-100%;}
+
+    45% {margin-left:-100%;}
+
+    50% {margin-left:-200%;}
+
+    70% {margin-left:-200%;}
+
+    75% {margin-left:-300%;}
+
+    95% {margin-left:-300%;}
+
+    100% {margin-left:-400%;}
+
+}
 
 @media screen and (max-width:400px){
-    .contenedor_carrusel{
-    display: none;
-
-}
     
+  .contenedor_carrusel{
+    display: none;
+  }
+  
+
 }
 
 

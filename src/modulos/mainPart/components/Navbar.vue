@@ -63,6 +63,9 @@ export default{
     border-left: none; 
     border-right: none;
     justify-content: space-evenly;
+    /* position: fixed;
+    width: 100vw;
+    z-index: 1; */
 }
 
 .clasic_ul {
