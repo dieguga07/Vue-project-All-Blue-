@@ -17,7 +17,8 @@ data() {
         page:1,
         lastPage:false,
         url:`http://localhost:8000/api/products?page=${this.page}`,
-        category: "main"
+        category: "main",
+        userSearch:""
     }
 },
 mounted(){
@@ -70,19 +71,27 @@ methods:{
         this.cartProducts = this.cartProducts.filter((product) => product.Pid !== deleteId)
         },
 
-        async nextPage(category){
-            if (!this.lastPage){
-                this.page += 1
+        async nextPage(category) {
+            if (!this.lastPage && this.category !== "search") {
+                this.page += 1;
                 const nextPageUrl = category === "main" ? `http://localhost:8000/api/products?page=${this.page}` : `http://localhost:8000/api/products/${category}?page=${this.page}`
                 await this.getProducts(nextPageUrl)
+            } else if ( !this.lastPage && this.category === "search") {
+                this.page += 1;
+                const searchUrl = `http://localhost:8000/api/products/search?variable=${this.userSearch}&page=${this.page}`
+                await this.getProducts(searchUrl)
             }
         },
 
-        async previousPage(category){
-            if (this.page !== 1){
+        async previousPage(category) {
+            if (this.page !== 1 && this.category !== "search") {
                 this.page -= 1
                 const previousPageUrl = category === 'main' ? `http://localhost:8000/api/products?page=${this.page}` : `http://localhost:8000/api/products/${category}?page=${this.page}`
                 await this.getProducts(previousPageUrl)
+            } else if (this.page !== 1 && this.category === "search") {
+                this.page -= 1
+                const searchUrl = `http://localhost:8000/api/products/search?variable=${this.userSearch}&page=${this.page}`
+                await this.getProducts(searchUrl);
             }
         },
 
@@ -126,8 +135,28 @@ methods:{
             this.category = "main"
             const allUrl = `http://localhost:8000/api/products?page=${this.page}`
             await this.getProducts(allUrl)
+        },
+
+        async searchProducts() {
+            this.page = 1;
+            this.category = "search";
+            if (this.userSearch.trim() !== "") {
+                const searchUrl = `http://localhost:8000/api/products/search?variable=${this.userSearch}&page=${this.page}`
+                await this.getProducts(searchUrl)
+            } else {
+                this.products = []
+            }
         }
     },
+
+    watch: {
+    search: function () {
+      this.searchProducts()
+    },
+
+    
+
+  },
 
 
 }
@@ -149,7 +178,7 @@ methods:{
       <form>
         <div class="search-container">
           <img src="../../../assets/images/lupa.png" alt="search" class="contenedor_buscador_img">
-          <input type="search" placeholder=" Search....">
+          <input v-model="userSearch"  @keyup.enter="searchProducts" type="search" placeholder=" Search....">
         </div>
       </form>
     </section>
@@ -282,7 +311,7 @@ main{
 
   input[type="search"] {
     background-color: rgba(42, 161, 185, 1);
-    width: 70vw;
+    width: 50vw;
     height: 50px;
     border-radius: 18px; 
     border: none;
@@ -399,10 +428,45 @@ main{
     cursor: pointer;
 }
 
-@media screen and (max-width:616px) {
+
+@media screen and (max-width:1050px) {
+    .contenedor_categorias ul{
+    display: flex;
+  
+    width: 615px;
+    height: 100px;
+    font-size: 15px;
+   }       
+}
+
+
+@media screen and (max-width:690px) {
     a{
         font-size: 15px;
     }
+    .contenedor_categorias ul{
+        display: flex;
+        flex-direction: column;
+        width: 150px;
+        height: 400px;
+        font-size: 15px;
+   }  
+   
+   
+    .contenedor_page_btn button{
+
+        width: 100px;
+        height: 40px;
+        border-radius: 25px;
+        border:solid black 1px;
+        background-color: rgba(42, 161, 185, 1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
+        transition: box-shadow 0.3s ease;
+
+    }
+   
+
+
 }
 
 
@@ -411,8 +475,8 @@ main{
    .contenedor_categorias ul{
     display: flex;
     flex-direction: column;
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 400px;
     font-size: 30px;
    }    
 

@@ -4,10 +4,6 @@ export default{
 
 
 
-
-
-
-
 }
 
 </script>
@@ -19,13 +15,9 @@ export default{
         <section class="contenedor_carrusel">
 
             <div class="carrusel">
-                <ul>
-                    <img src="../../../assets/images/tennis.jpg" alt="foto_decorativa_1">
-                    <img src="../../../assets/images/zapatos.jpg" alt="foto_decorativa_2">
-                    <img src="../../../assets/images/soffa.jpg" alt="foto_decorativa_3">
-                    <img src="../../../assets/images/phone.jpg" alt="foto_decorativa_4">
-                    <img src="../../../assets/images/sunglasses.jpg" alt="foto_decorativa_5">
-                </ul>   
+            
+                    <img src="../../../assets/images/Fashion.png" alt="foto_decorativa_1">
+               
             </div>
         </section>
     </section>
@@ -44,37 +36,26 @@ export default{
 }
 
 .carrusel{
-    overflow: hidden;
-    height: 40vh;
-    width: 80vw;
+  
+    
+    width: 100%;
 }
 
 .carrusel ul{
     display: flex;
     padding: 0px;
-    width: 400%;
+    width: 100%;
     list-style: none;
-    animation: slide 50s infinite cubic-bezier(0.55, 0.048, 0.37, 0.92);
+}
+
+.carrusel img{
+    width:100%;
+    border: 1px solid  rgba(0, 0, 0, 0.174) ;
+    border-radius: 25px;
 }
 
 @keyframes slide {
-    0% {margin-left:0;}
-
-    20% {margin-left:0;}
-
-    25% {margin-left:-100%;}
-
-    45% {margin-left:-100%;}
-
-    50% {margin-left:-200%;}
-
-    70% {margin-left:-200%;}
-
-    75% {margin-left:-300%;}
-
-    95% {margin-left:-300%;}
-
-    100% {margin-left:-400%;}
+ 
 
 }
 

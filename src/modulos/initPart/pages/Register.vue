@@ -4,10 +4,8 @@ import router from '../../../router/router.js'
 
 export default{
 
-
 data(){
   return{
-
     user: "",
     email:"",
     phone:"",
@@ -33,6 +31,7 @@ data(){
 methods:{
 
   sendForm(e){
+
     e.preventDefault()
 
     this.checkPassword()
@@ -46,8 +45,7 @@ methods:{
     if(this.validUser && this.validPassword && this.validEmail && this.validPhone ){
 
       const userStore = UserContext()
-     
-
+    
       const registerData = {
         nombre: this.user,
         email:this.email,
@@ -72,8 +70,14 @@ methods:{
         }
       })
       .then( () =>{
-        userStore.setUser(true),
+        userStore.setUser(true)
+
+        userStore.setName(this.user)
+        userStore.setEmail(this.email)
+        userStore.setPhone(this.phone)
+
         router.push("/private/products")
+
       })
       .catch(() => {
         userStore.setUser(false)
@@ -83,6 +87,7 @@ methods:{
           this.responseFail = ""
         }, 5000)
       })
+
     }
   },
 
@@ -92,8 +97,8 @@ methods:{
       return this.validUser = false
     }
 
-    else if(this.user.length < 4 ){
-      this.userMessage = "El nombre del usuario de estar compuesto por 4 letras o mas"
+    else if(this.user.length < 4  || this.user.length > 20){
+      this.userMessage = "El nombre del usuario de estar compuesto de 4 a 20 letras"
       return this.validUser = false
     }
 
@@ -190,7 +195,7 @@ watch: {
             <span :class=" validPhone ? 'accept-message' : 'error-message' ">{{ phoneMessage }}</span>
             
             <label for="password" class="register-label">Password</label>
-            <input v-model="password"  type="password" id="password" name="password" required >
+            <input v-model="password"  type="password" id="password" name="password" autocomplete="current-password" required >
             <span  :class=" validPassword ? 'accept-message' : 'error-message' " >{{  passwordMessage }}</span>
             
           

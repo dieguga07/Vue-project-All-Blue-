@@ -9,7 +9,8 @@ export default {
 
    data() {
       return {
-         compraState:false
+         compraState:false,
+         cartState:false
       }
    },
 
@@ -18,7 +19,6 @@ export default {
       compraUser(){
 
       },
-
       totalPrice(){
          let cartPrice = 0;
          for (let product in this.cartProducts){
@@ -39,8 +39,23 @@ export default {
           return this.$emit('deleteProduct',product.Pid)
          }
          product.Pcantidad -=1
+      },
+
+      openCart(){
+         if (this.cartState === false){
+            this.cartState = true   
+         }else{
+            this.cartState = false  
+         }
       }
+
+
+
    },
+
+   
+   emits: ['vaciarCart', 'deleteProduct'], 
+
 }
 </script>
 
@@ -53,15 +68,11 @@ export default {
       ---------------------------------------------------------------------------  -->
 
 
+   <section :class="cartState ? 'contenedor-cart_open' : 'contenedor-cart'">
 
-   <!-- <section class="contenedor-cart">
-
-      <img src="../../../assets/images/cart.png" alt="Carrito">
+      <img @click="openCart" src="../../../assets/images/cart.png" alt="Carrito">
         
-   </section> -->
-
-
-
+   
 
 
 <!--  ---------------------------------------------------------------------------
@@ -72,7 +83,7 @@ export default {
 
 
 
-   <section class="contenedor-cart2">
+   <section :class="cartState ? 'contenedor-cart2_open' : 'contenedor-cart2'">
 
       <div class="cart">
          <ul >
@@ -80,6 +91,7 @@ export default {
             <li>Name</li>
             <li>Quantity</li>
             <li>Price</li>
+            <li>Remove</li>
          </ul>
       </div>
 
@@ -87,9 +99,11 @@ export default {
          <ul >
             <li> <img class="cart-img" :src="product.Pimage ? product.Pimage  : 'https://cdn.icon-icons.com/icons2/3001/PNG/512/default_filetype_file_empty_document_icon_187718.png'" :alt="product.name"></li>
             <li> <p>{{ product.Pname }}</p> </li>
-            <li class="cart-btn-cantidad " > {{ product.Pcantidad }} <a @:click="removeCantidad(product)"><img src="../../../assets/images/menos.png" alt="-"></a><a @:click="addCantidad(product)"> <img src="../../../assets/images/mas.png" alt="+"></a>  </li>
-            <li> <p>{{ parseFloat((product.Pprice  * product.Pcantidad).toFixed(2))}} €</p> </li>
+            <li class="cart-btn-cantidad " ><a @:click="removeCantidad(product)"><img src="../../../assets/images/menos.png" alt="-"></a><p>{{ product.Pcantidad }}</p><a @:click="addCantidad(product)"> <img src="../../../assets/images/mas.png" alt="+"></a>  </li>
+            <li> <p>{{ parseFloat((product.Pprice  * product.Pcantidad).toFixed(2))}} €</p> </li>  
+            <a class="cart-btn_vaciar_one" @click="$emit('deleteProduct',product.Pid)">X</a>
          </ul>
+          
       </div>
  
       <div class="cart">
@@ -97,32 +111,42 @@ export default {
          <ul>
             <li> Total price : {{ totalPrice() }} €</li>
             <li> <button @click="compraUser" class="cart-btn-comprar"> Buy </button></li>
-            <li> <button @click="$emit('vaciarCart')" class="cart-btn-vaciar"> empty all </button> </li>
+            <li> <button @click="$emit('vaciarCart')" class="cart-btn-vaciar"> Remove all </button> </li>
          </ul>
 
       </div>
    
    </section>
 
-
-
-
+</section> 
 
 </template>
 
 <style scoped>
 
 
-
 .contenedor-cart2{
-   display: flex;
-   justify-content: space-between;
+   display: none;
+   justify-content: space-evenly;
    flex-direction: column;
-   background-color: rgb(98, 169, 195);
+   background-color: rgb(9, 64, 84); 
    padding: 20px;
    color: white;
-   font-size: 20px;
+   font-size: 100%;
    
+}
+
+
+.contenedor-cart2_open{
+   display: flex;
+   justify-content: space-evenly;
+   flex-direction: column;
+   background-color: rgb(9, 64, 84); 
+   padding: 20px;
+   color: white;
+   font-size: 100%;
+   width: 100%;
+   height: 100%;
 }
 
 .cart-btn-cantidad{
@@ -133,10 +157,12 @@ export default {
 }
 
 .cart-btn-cantidad a{
-   padding-left: 10px;
+   padding-left: 5px;
+   padding-right: 5px;
    text-align: center;
    
 }
+
 
 .cart-btn-cantidad a img {
   background-color:  transparent;
@@ -159,25 +185,29 @@ div{
 
 
 .cart ul{
-   
+  
    display: flex;
    align-items: center;
    flex-direction: row;
-   justify-content: space-evenly;
+   justify-content: space-around;
    list-style: none;
    padding: 20px;
+   
+   
 
 }
 
 .cart ul li{
-   min-width: 5%;
+   min-width: 10%;
+   max-width: 10%;
    text-align: center;
+   
    
 }
 
 .cart img{
-   width: 60px;
-   height: 60px;
+   width: 50px;
+   height: 50px;
    border-radius: 50%;
    background-color: white;
    border: 2px solid black;
@@ -194,6 +224,7 @@ div{
    width: 10vw;
    height: 5vh;
    border-radius: 25px;
+   border:solid black 1px;
 }
 
 .cart-btn-comprar{
@@ -203,6 +234,10 @@ div{
 .cart-btn-vaciar{
    background-color: rgba(42, 161, 185, 1);
   
+}
+.cart-btn_vaciar_one{
+   color: red;
+   cursor: pointer;
 }
 
 .contenedor-cart{
@@ -218,37 +253,62 @@ div{
    border-top-left-radius: 25px;
    border-bottom-left-radius: 25px;
    z-index: 1;
+   cursor: pointer;
 }
 
-.contenedor-cart img{
+
+.contenedor-cart_open{
+   display: flex;
+   justify-content: start;
+   align-items: start;
+   position: fixed; 
+   right: 0; 
+   top:10%;
+   width:90%;
+   height: 80%; 
+   background-color: rgba(42, 161, 185, 1); 
+   border-top-left-radius: 25px;
+   border-bottom-left-radius: 25px;
+   z-index: 1;
+   cursor: pointer;
+}
+
+
+
+
+@media screen and (max-width:650px) {
+    
   
-   width: 40px;
-   height: 40px;
-}
-
-
-@media screen and (max-width:564px) {
+   .cart img{
     
-   .contenedor-cart{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 50px;
-        margin-bottom: 30px;
-        border-top-left-radius: 15px;
-        border-bottom-left-radius: 15px;    
-
-    }     
-    
-   .contenedor-cart img{
-    
-      width: 30px;
-      height: 30px;
+      width: 40px;
+      height: 40px;
       margin: 0 auto;
    }
+   .cart-btn-cantidad a img {
+      background-color:  transparent;
+      border: none;
+      width: 20px;
+      height: 20px;
+   }
+
 
 }
+
+
+@media screen and (max-width:480px) {
+    
+    
+      
+    
+  
+  
+  
+  
+  }
+  
+
+
 
 
 </style>

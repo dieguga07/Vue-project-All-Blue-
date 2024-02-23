@@ -7,6 +7,11 @@ export const UserContext = defineStore('userState',{
     state: () =>({
 
         user:true,
+        nombre:"",
+        email:"",
+        phone:"",
+        password:""
+
 
     }),
 
@@ -17,6 +22,22 @@ export const UserContext = defineStore('userState',{
 
         setUser(newState) {
           this.user = newState
+        },
+
+        setName(newState) {
+          this.nombre = newState
+        },
+
+        setEmail(newState) {
+          this.email = newState
+        },
+
+        setPhone(newState) {
+          this.phone = newState
+        },
+
+        setPassword(newState) {
+          this.password = newState
         },
 
       }
