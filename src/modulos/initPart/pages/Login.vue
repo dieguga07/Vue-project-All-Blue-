@@ -1,5 +1,7 @@
 <script>
+import { UserContext } from '@/stores/UserContext'
 import router from '../../../router/router.js'
+
 
 export default{
 
@@ -14,11 +16,11 @@ export default{
         
           user: "",
           password: "",
-        
-        validPassword:false,
-        validUser:false,
-        userMessage: "" ,
-        passwordMessage: "" ,
+          validPassword:false,
+          validUser:false,
+          userMessage: "" ,
+          passwordMessage: "" ,
+          responseFail:""
 
         } 
     },
@@ -31,38 +33,63 @@ export default{
 
         this.checkUser()
 
-        setTimeout(() => {
-
           if(this.validUser && this.validPassword){
-         
-            return router.push("/private/products")
-         
-          }  
 
-        }, 1000)
-        
+            const userStore = UserContext()
+
+            fetch(`http://localhost:8000/api/login?name=${this.user}`)
+              .then(response => {
+                  if (!response.ok) {
+                      throw new Error("Failed to login")
+                  }
+                  return response.json()
+              })
+              .then(data => {
+                  // console.log(data)
+                  if (data.user.nombre === this.user && data.user.password  === this.password ) {
+                    
+                      userStore.setUser(true)
+                      userStore.setName(data.user.nombre)
+                      userStore.setEmail(data.user.email)
+                      userStore.setPhone(data.user.phone)
+                      
+                      router.push("/private/products")
+                  } else {
+                      throw new Error("User not found")
+                  }
+              })
+              .catch( () => {
+                  
+                  userStore.setUser(false)
+                  this.responseFail = "Failed to login"
+
+                  setTimeout(() => {
+                      this.responseFail = ""
+                  }, 5000)
+              })
+          }  
           
        },
 
        checkUser(){
         if(this.user.trim() === "" ){
           
-          this.userMessage = "Este campo no puede estar vacio"
+          this.userMessage = "This field cannot be empty."
           return this.validUser = false
         }else if(this.user.length < 4 ){
-          this.userMessage = "El nombre del usuario de estar compuesto por 4 letras o mas"
+          this.userMessage ="The username must be composed of 4 letters or more."
           return this.validUser = false
         }
-        this.userMessage = "Todo OK"
+        this.userMessage = "✔"
         this.validUser = true
        },
        
        checkPassword(){
         if(this.password.trim() === "" ){
-          this.passwordMessage = "Este campo no puede estar vacio"
+          this.passwordMessage = "This field cannot be empty."
           return this.validPassword = false
         }
-        this.passwordMessage = "Todo OK"
+        this.passwordMessage = "✔"
         this.validPassword = true
        }
     }, 
@@ -91,7 +118,7 @@ export default{
             <p class="login-title">Login</p>
 
             <article class="login-input">
-
+                <span class="error-message">{{ responseFail }}</span>
                 <label for="user" class="login-label">User</label>
                  <!-- Con v-model hacemos un enlazado bidireccional de este input con la variable user -->
                 <input v-model="user"  type="text" id="user" name="user" required>

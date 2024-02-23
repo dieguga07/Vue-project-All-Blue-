@@ -2,12 +2,18 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import AuthenticationState from './auth-guard'
 
 const routes = [
+
+    {
+        path:'/',
+        redirect:'/public'
+    },
+    
     {
         path: '/public',
         component: () => import("../layouts/PublicLayout.vue"),
         children: [
             {
-                path: '',
+                path: '/public',
                 component: () => import("../modulos/initPart/pages/Home.vue")
             },
 

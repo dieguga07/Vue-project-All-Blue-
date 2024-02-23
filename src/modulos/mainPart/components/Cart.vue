@@ -42,10 +42,12 @@ export default {
       },
 
       openCart(){
-         if (this.cartState === false){
-            this.cartState = true   
+         if (this.cartState ){
+            this.cartState = false   
+            
          }else{
-            this.cartState = false  
+            this.cartState = true  
+            
          }
       }
 
@@ -68,6 +70,9 @@ export default {
       ---------------------------------------------------------------------------  -->
 
 
+
+
+
    <section :class="cartState ? 'contenedor-cart_open' : 'contenedor-cart'">
 
       <img @click="openCart" src="../../../assets/images/cart.png" alt="Carrito">
@@ -86,7 +91,7 @@ export default {
    <section :class="cartState ? 'contenedor-cart2_open' : 'contenedor-cart2'">
 
       <div class="cart">
-         <ul >
+         <ul class="cart-sections">
             <li>Image</li>
             <li>Name</li>
             <li>Quantity</li>
@@ -120,6 +125,7 @@ export default {
 
 </section> 
 
+
 </template>
 
 <style scoped>
@@ -133,9 +139,13 @@ export default {
    padding: 20px;
    color: white;
    font-size: 100%;
+ 
    
 }
 
+.cart-btn_vaciar_one{
+   color: red;
+}
 
 .contenedor-cart2_open{
    display: flex;
@@ -146,8 +156,12 @@ export default {
    color: white;
    font-size: 100%;
    width: 100%;
-   height: 100%;
+   min-height: 70vh;
+   
+   
 }
+
+
 
 .cart-btn-cantidad{
    display: flex;
@@ -191,7 +205,7 @@ div{
    flex-direction: row;
    justify-content: space-around;
    list-style: none;
-   padding: 20px;
+   padding: 2%;
    
    
 
@@ -201,6 +215,7 @@ div{
    min-width: 10%;
    max-width: 10%;
    text-align: center;
+   padding-left: 0%;
    
    
 }
@@ -235,10 +250,7 @@ div{
    background-color: rgba(42, 161, 185, 1);
   
 }
-.cart-btn_vaciar_one{
-   color: red;
-   cursor: pointer;
-}
+
 
 .contenedor-cart{
    display: flex;
@@ -254,6 +266,8 @@ div{
    border-bottom-left-radius: 25px;
    z-index: 1;
    cursor: pointer;
+   
+   
 }
 
 
@@ -265,22 +279,24 @@ div{
    right: 0; 
    top:10%;
    width:90%;
-   height: 80%; 
    background-color: rgba(42, 161, 185, 1); 
    border-top-left-radius: 25px;
    border-bottom-left-radius: 25px;
    z-index: 1;
    cursor: pointer;
+   overflow-y: scroll;
+   z-index: 4;
+   max-height: 70%;
+   min-height: 70%;
 }
 
 
 
 
-@media screen and (max-width:650px) {
+@media screen and (max-width:900px) {
     
   
    .cart img{
-    
       width: 40px;
       height: 40px;
       margin: 0 auto;
@@ -292,16 +308,37 @@ div{
       height: 20px;
    }
 
+   .cart button{
+   width: 80px;
+   height: 30px;
+   border-radius: 25px;
+   border:solid black 1px;
+   
+}
+
 
 }
 
 
-@media screen and (max-width:480px) {
+@media screen and (max-width:500px) {
     
     
-      
+   .cart ul{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  list-style: none;
+  padding: 2%;
+
+
+}   
     
-  
+  .cart-sections{
+   display: none;
+   color: transparent;
+   height:1px;
+  }
   
   
   

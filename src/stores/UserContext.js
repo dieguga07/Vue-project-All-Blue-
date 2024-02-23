@@ -6,7 +6,7 @@ export const UserContext = defineStore('userState',{
 
     state: () =>({
 
-        user:true,
+        user:false,
         nombre:"",
         email:"",
         phone:"",
@@ -40,7 +40,18 @@ export const UserContext = defineStore('userState',{
           this.password = newState
         },
 
+      },
+
+      persist: {
+        enabled:true,
+        strategies:[
+          {
+            key:"auth",
+            storage: localStorage,
+          }
+        ]
       }
+
 
 
 })

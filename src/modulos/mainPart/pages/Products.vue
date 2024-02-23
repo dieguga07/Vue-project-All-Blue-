@@ -245,6 +245,7 @@ methods:{
 main{
     background-color:rgba(197, 176, 149, 1);
     font-family: "Montagu Slab", serif;
+    
 }
 
 .products_selection{

@@ -2,9 +2,11 @@
 import Navbar from '../components/Navbar.vue'
 import Footer from '../components/Footer.vue'
 import { UserContext   } from '@/stores/UserContext'
+import router from '@/router/router'
 
 
 export default{
+
     components: { Navbar,Footer },
 
     data() {
@@ -15,12 +17,32 @@ export default{
         }
     },
 
-  created() {
+    created() {
         const userStore = UserContext()
         this.nombre = userStore.nombre
         this.email = userStore.email
         this.phone = userStore.phone
-    }
+    },
+
+    methods:{
+        deleteUser(){
+            fetch(`http://localhost:8000/api/user/delete/${this.nombre}`, {
+                method: 'DELETE'
+            })
+            .then(response => {
+                if (response.ok) {
+                    router.push("/public")
+                } else {
+                  
+                    console.error('Failed to delete user')
+                }
+            })
+            .catch(() => {
+                console.error('Failed to delete user')
+            })
+        }
+    },
+
 }
 
 </script>
@@ -31,8 +53,9 @@ export default{
 <Navbar></Navbar>
 
     <section>
-
+        
         <article class="user_part_contenedor">
+            
             <div class="user_part">
                 <ul>
                     <li>  <img src="../../../assets/images/foto_profile_1.png" alt="user_image"></li>
@@ -41,14 +64,17 @@ export default{
                         <li><p>{{email}}</p></li>
                         <li><p>{{phone}}</p></li>
                     </div>
-
+                    <p class="user_delete" @click="deleteUser"> <a> Delete account</a></p>
                 </ul>
 
+               
+
             </div>
+            
 
         </article>
 
-
+        
     </section>
 
 
@@ -69,6 +95,16 @@ section{
     width: 100%;
     height: 100vh;
     color: rgb(0, 0, 0);
+}
+
+
+.user_delete{
+    position: absolute;
+    top: 12vh;
+    padding-left: 20px;
+    z-index: 3;
+    cursor: pointer;
+   color: rgb(195, 43, 43);
 }
 
 .user_part_contenedor{
@@ -118,7 +154,7 @@ section{
 
 
 
- @media screen and (max-width:339px) {
+ @media screen and (max-width:440px) {
 
     .user_part img{
         width: 90px;
@@ -126,8 +162,16 @@ section{
     }
 
     .user_part_information{
-        font-size: 12px; 
+        font-size: 1.2vh; 
     }
+
+
+    .user_delete{
+    font-size: 15px;
+    top: 15vh;
+    padding-left: 0px;
+    
+}
 
 }
 

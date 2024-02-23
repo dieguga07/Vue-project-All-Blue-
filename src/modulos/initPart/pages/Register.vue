@@ -81,7 +81,7 @@ methods:{
       })
       .catch(() => {
         userStore.setUser(false)
-        this.responseFail = "El usuario o email ya existen"
+        this.responseFail = "The user or email already exists"
 
         setTimeout(() => {
           this.responseFail = ""
@@ -93,50 +93,50 @@ methods:{
 
   checkUser(){
     if(this.user.trim() === "" ){
-      this.userMessage = "Este campo no puede estar vacio"
+      this.userMessage = "This field cannot be empty."
       return this.validUser = false
     }
 
     else if(this.user.length < 4  || this.user.length > 20){
-      this.userMessage = "El nombre del usuario de estar compuesto de 4 a 20 letras"
+      this.userMessage = "The username must be composed of 4 to 20 letters."
       return this.validUser = false
     }
 
-    this.userMessage = "Todo OK"
+    this.userMessage = "✔"
     this.validUser = true
   },
 
   checkPassword(){
     if(this.password.trim() === "" ){
-      this.passwordMessage = "Este campo no puede estar vacio"
+      this.passwordMessage ="This field cannot be empty."
       return this.validPassword = false
     }
-    this.passwordMessage = "Todo OK"
+    this.passwordMessage = "✔"
     this.validPassword = true
   },
   checkEmail(){
     if(this.email.trim() === "" ){
-      this.emailMessage= "Este campo no puede estar vacio"
+      this.emailMessage= "This field cannot be empty."
       return this.validEmail = false
     }
     else if(!this.emailRegex.test(this.email) ){
-      this.emailMessage = "El email no tiene el formato correcto"
+      this.emailMessage = "The email does not have the correct format."
       return this.validEmail = false
     }
-    this.emailMessage = "Todo OK"
+    this.emailMessage = "✔"
     this.validEmail = true
   },
 
   checkPhone(){
     if(this.phone.trim() === "" ){
-      this.phoneMessage = "Este campo no puede estar vacio"
+      this.phoneMessage = "This field cannot be empty."
       return this.validPhone = false
     }
     else if(!this.phoneRegex.test(this.phone) ){
-      this.phoneMessage = "El télefono no tiene el formato correcto"
+      this.phoneMessage = "The phone number does not have the correct format."
       return this.validPhone = false
     }
-    this.phoneMessage = "Todo OK"
+    this.phoneMessage = "✔"
     this.validPhone = true  
   }
 
