@@ -10,13 +10,19 @@ export default {
    data() {
       return {
          compraState:false,
-         cartState:false
+         cartState:false,
+         buyState:false
       }
    },
 
    methods:{
 
       compraUser(){
+         this.$emit('vaciarCart')
+         this.buyState = true
+          setTimeout(() => {
+            this.buyState = false
+            }, 10000)
 
       },
       totalPrice(){
@@ -64,31 +70,26 @@ export default {
 <template>
 
 <!--  ---------------------------------------------------------------------------
-      ---------------------------------------------------------------------------
       -------------------------CARRITO SIN DESPLEGAR-----------------------------
-      ---------------------------------------------------------------------------
       ---------------------------------------------------------------------------  -->
 
 
+   <section :class="cartState ? 'contenedor-cart_open' : 'contenedor-cart '">
 
-
-
-   <section :class="cartState ? 'contenedor-cart_open' : 'contenedor-cart'">
-
-      <img @click="openCart" src="../../../assets/images/cart.png" alt="Carrito">
-        
+      <img @click="openCart" src="../../../assets/images/cart.png" alt="Carrito">        
    
-
-
 <!--  ---------------------------------------------------------------------------
-      ---------------------------------------------------------------------------
       --------------------------CARRITO  DESPLEGADO------------------------------
-      ---------------------------------------------------------------------------
       ---------------------------------------------------------------------------  -->
-
-
 
    <section :class="cartState ? 'contenedor-cart2_open' : 'contenedor-cart2'">
+
+      
+      <div v-if="buyState" class="purchase-message">
+
+      <p>Purchase has been successfully completed.</p>
+
+      </div>
 
       <div class="cart">
          <ul class="cart-sections">
@@ -101,6 +102,7 @@ export default {
       </div>
 
       <div class="cart" v-for="product in cartProducts" :key="product.Pid">
+
          <ul >
             <li> <img class="cart-img" :src="product.Pimage ? product.Pimage  : 'https://cdn.icon-icons.com/icons2/3001/PNG/512/default_filetype_file_empty_document_icon_187718.png'" :alt="product.name"></li>
             <li> <p>{{ product.Pname }}</p> </li>
@@ -142,6 +144,21 @@ export default {
  
    
 }
+.purchase-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(160, 237, 160, 0.8);
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 2; 
+  color: black;
+}
+
+.dark_mode{
+   background-color:  rgba(63, 62, 62, 1);
+}
 
 .cart-btn_vaciar_one{
    color: red;
@@ -157,7 +174,6 @@ export default {
    font-size: 100%;
    width: 100%;
    min-height: 70vh;
-   
    
 }
 
@@ -248,7 +264,6 @@ div{
 
 .cart-btn-vaciar{
    background-color: rgba(42, 161, 185, 1);
-  
 }
 
 
@@ -266,10 +281,7 @@ div{
    border-bottom-left-radius: 25px;
    z-index: 1;
    cursor: pointer;
-   
-   
 }
-
 
 .contenedor-cart_open{
    display: flex;

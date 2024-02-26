@@ -1,16 +1,24 @@
 <script>
-
 import { UserContext } from '../../../stores/UserContext'
-
+import { DarkMode } from '@/stores/DarkMode'
 
 export default{
 
     data() {
         return {
 
-            userStore: UserContext()
+            userStore: UserContext(),
+            dark: DarkMode().dark
         }
     },
+    methods: {
+    toggleDarkMode() {
+      // Invierte el valor del modo oscuro
+      this.dark = !this.dark;
+      // Llama al método `setDarkMode` del almacenamiento de Pinia para actualizar el estado
+      DarkMode().setDarkMode(this.dark);
+    }
+  }
 
 }
 
@@ -21,7 +29,7 @@ export default{
 
 <header>
 
-     <nav class="clasic_nav">
+    <nav :class="{ 'clasic_nav': true, 'dark_mode': dark }">
 
         <ul class="clasic_ul">
             <li><img src="../../../assets/images/wave.png" title="All Blue" alt="All Blue" class="clasic_img"></li>
@@ -34,7 +42,7 @@ export default{
         </ul>
 
         <ul class="clasic_ul">
-            <li id="luna"><a><img src="../../../assets/images/luna.png" alt="Cambiar modo" title="Cambiar modo"  class="clasic_img" ></a></li>
+            <li @click="toggleDarkMode" id="luna"><a><img src="../../../assets/images/luna.png" alt="Cambiar modo" title="Cambiar modo"  class="clasic_img" ></a></li>
         </ul>
 
     </nav> 
@@ -63,9 +71,11 @@ export default{
     border-left: none; 
     border-right: none;
     justify-content: space-evenly;
-    /* position: fixed;
-    width: 100vw;
-    z-index: 1; */
+   
+}
+
+.dark_mode{
+    background-color: rgba(63, 62, 62, 1);
 }
 
 .clasic_ul {

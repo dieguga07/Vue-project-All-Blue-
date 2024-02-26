@@ -3,6 +3,8 @@ import Navbar from '../components/Navbar.vue'
 import Footer from '../components/Footer.vue'
 import { UserContext   } from '@/stores/UserContext'
 import router from '@/router/router'
+import { DarkMode } from '@/stores/DarkMode'
+
 
 
 export default{
@@ -13,7 +15,8 @@ export default{
         return {
             nombre: "",
             email: "",
-            phone: ""
+            phone: "",
+            dark:DarkMode()
         }
     },
 
@@ -52,7 +55,7 @@ export default{
 
 <Navbar></Navbar>
 
-    <section>
+    <section :class="{ 'dark_mode': dark.dark }">
         
         <article class="user_part_contenedor">
             
@@ -97,6 +100,10 @@ section{
     color: rgb(0, 0, 0);
 }
 
+.dark_mode{
+    background-color:rgba(42, 44, 42, 1);
+
+}
 
 .user_delete{
     position: absolute;

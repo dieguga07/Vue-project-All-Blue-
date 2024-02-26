@@ -1,10 +1,12 @@
 <script>
+import { DarkMode } from '@/stores/DarkMode';
+
 export default{
 
 
 data() {
     return {
-      
+      dark:DarkMode()
     }
 },
 methods: {
@@ -21,9 +23,9 @@ methods: {
 
 <template>
 
-    <footer>
+    <footer >
 
-        <section class="contenedor_footer">
+        <section :class="{ 'dark_mode': dark.dark }">
             <section class="contenedor_redes_sociales">
 
                 <ul>
@@ -50,7 +52,7 @@ methods: {
 
         </section>
 
-       <p>Copyright ©2024; Designed by dieguga07</p>
+       <p class="dark">Copyright ©2024; Designed by dieguga07</p>
 
     </footer>
 
@@ -69,6 +71,16 @@ footer{
     border-bottom: none; 
     border-left: none; 
     border-right: none;
+}
+
+.dark_mode{
+    background-color: rgba(63, 62, 62, 1);
+    color: white;
+}
+
+.dark{
+    background-color: #000000;
+    color: white;
 }
 
 footer p{

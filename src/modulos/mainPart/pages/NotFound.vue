@@ -19,13 +19,11 @@ export default{
 
             <article>
 
-
                 <h1>Oops !</h1>
 
                 <img src="../../../assets/images/NotFound.png"> 
 
                 <p>Page not found . <router-link to="/public" class="nav-link">Go Home</router-link></p>
-
 
             </article>
       

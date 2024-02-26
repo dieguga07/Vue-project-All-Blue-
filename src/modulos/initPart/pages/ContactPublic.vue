@@ -34,7 +34,7 @@ methods:{
 
                 setTimeout(() => {
                     this.confirmContact = "" 
-                    //  return router.push("/products")
+                    
             }, 7000)
 
             )

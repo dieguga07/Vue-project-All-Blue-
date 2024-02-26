@@ -4,6 +4,8 @@ import Navbar from "../components/Navbar.vue"
 import Footer from "../components/Footer.vue"
 import Carrusel from "../components/Carrusel.vue"
 import Cart from "../components/Cart.vue"
+import { DarkMode } from "@/stores/DarkMode"
+
 
 export default{
 
@@ -18,7 +20,8 @@ data() {
         lastPage:false,
         url:`http://localhost:8000/api/products?page=${this.page}`,
         category: "main",
-        userSearch:""
+        userSearch:"",
+        dark:DarkMode()
     }
 },
 mounted(){
@@ -45,7 +48,7 @@ methods:{
         },
 
         addFavourite(name,price,image,id){
-            
+
             const product = {
                 Pname : name,
                 Pprice: price,
@@ -57,8 +60,8 @@ methods:{
             if(!this.cartProducts.some(Newproduct => Newproduct.Pid === product.Pid)){
                 this.cartProducts.push(product)
             }
-            
-            
+
+
         },
 
         vaciarCart(){
@@ -146,7 +149,7 @@ methods:{
             } else {
                 this.products = []
             }
-        }
+        }, 
     },
 
     watch: {
@@ -154,7 +157,7 @@ methods:{
       this.searchProducts()
     },
 
-    
+
 
   },
 
@@ -168,11 +171,10 @@ methods:{
 
 <Navbar></Navbar>
 
-<main>
-
+<main :class="{ 'dark_mode': dark.dark }">
     <Carrusel></Carrusel>
 
-    
+
 
     <section class="contenedor_buscador">
       <form>
@@ -183,7 +185,7 @@ methods:{
       </form>
     </section>
 
-    
+
 
     <section class="contenedor_categorias">
         <ul>
@@ -193,7 +195,7 @@ methods:{
             <li><a @click="footwearCategory" :class="{ 'products_selection': category === 'footwear' }" >Footwear</a></li>
             <li><a @click="clothesCategory" :class="{ 'products_selection': category === 'clothes' }" >Clothes</a></li>
             <li><a @click="accessoriesCategory" :class="{ 'products_selection': category === 'accessories' }" >Accessories</a></li>
-            
+
         </ul>
     </section>
 
@@ -208,17 +210,17 @@ methods:{
     </form>
 
 
-    <section class="contenedor-cards">
-    
-        <div class="card" v-for="product in products" :key="product.id">
-            
-            <img class="card-img" :src="product.image ? product.image  : 'https://cdn.icon-icons.com/icons2/3001/PNG/512/default_filetype_file_empty_document_icon_187718.png'" :alt="product.name">
+    <section class="contenedor-cards" >
+
+        <div class="card" :class="{ 'dark': dark.dark  }" v-for="product in products" :key="product.id">
+
+            <img class="card-img" :class="{ 'dark': dark.dark  }" :src="product.image ? product.image  : 'https://cdn.icon-icons.com/icons2/3001/PNG/512/default_filetype_file_empty_document_icon_187718.png'" :alt="product.name">
             <!-- <p class="card-img-back">{{ product.description }}</p> -->
 
-            <div class="card-title">
+            <div class="card-title" :class="{ 'dark': dark.dark  }">
                 <p>{{ product.name }}</p>
             </div>
-            <div class="card-btn">
+            <div class="card-btn" :class="{ 'dark': dark.dark  }">
                 <p>{{ product.price }} €</p>
                 <a @click="addFavourite(product.name,product.price,product.image,product.id)"> <img src="../../../assets/images/add.png" alt="Add to cart"></a>
             </div>
@@ -231,7 +233,7 @@ methods:{
 </main>
 
 <Footer></Footer>
-  
+
 </template>
 
 
@@ -245,7 +247,17 @@ methods:{
 main{
     background-color:rgba(197, 176, 149, 1);
     font-family: "Montagu Slab", serif;
-    
+
+}
+
+.dark_mode {
+    background-color:rgba(42, 44, 42, 1);
+    font-family: "Montagu Slab", serif;
+    color: white;
+}
+
+.dark{
+    background-color:  rgba(63, 62, 62, 1);
 }
 
 .products_selection{
@@ -285,7 +297,7 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
   }
 
   .contenedor_buscador form {
@@ -297,7 +309,7 @@ main{
 
   .search-container {
     position: relative;
-    
+
   }
 
   .contenedor_buscador_img {
@@ -305,22 +317,23 @@ main{
     top: 50%;
     left: 10px;
     transform: translateY(-50%);
-    width: 20px; 
+    width: 20px;
     height: 20px;
-    cursor: pointer; 
+    cursor: pointer;
   }
 
   input[type="search"] {
     background-color: rgba(42, 161, 185, 1);
     width: 50vw;
     height: 50px;
-    border-radius: 18px; 
+    border-radius: 18px;
     border: none;
     font-size: 20px;
     outline: none;
     color: black;
-    padding-left: 40px; 
+    padding-left: 40px;
   }
+
 
 .contenedor-cards {
     display: grid;
@@ -334,7 +347,7 @@ main{
 }
 
 .card {
-    min-width: 250px; 
+    min-width: 250px;
     min-height: 400px;
     background-color: white;
     border-radius: 50px;
@@ -352,7 +365,7 @@ main{
     padding: 20px;
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
-    
+
 }
 
 .card-img-back{
@@ -362,7 +375,7 @@ main{
 }
 
 .card:hover .card-img-back {
-    display: block; 
+    display: block;
 }
 
 .card-title{
@@ -372,7 +385,7 @@ main{
     font-size:20px;
     width: 100%;
     height: 20%;
-    
+
 }
 
 
@@ -385,7 +398,7 @@ main{
     border-bottom-left-radius: 50px;
     border-bottom-right-radius: 50px;
     font-size: 25px;
-    
+
 }
 
 .card-btn img{
@@ -404,7 +417,7 @@ main{
 
 .contenedor_categorias{
     width: 100%;
-    padding-top: 3vh;  
+    padding-top: 3vh;
 }
 
 
@@ -415,14 +428,14 @@ main{
     justify-content: space-evenly;
     width: 70vw;
     list-style: none;
-    border-top: 1px solid #000000; 
-    border-bottom: 1px solid #000000; 
-    border-left: none; 
+    border-top: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    border-left: none;
     border-right: none;
-    font-size: 20px; 
+    font-size: 20px;
     height: 100px;
     margin:  0 auto;
-    
+
 }
 
 .contenedor_categorias a{
@@ -433,11 +446,11 @@ main{
 @media screen and (max-width:1050px) {
     .contenedor_categorias ul{
     display: flex;
-  
+
     width: 615px;
     height: 100px;
     font-size: 15px;
-   }       
+   }
 }
 
 
@@ -451,9 +464,9 @@ main{
         width: 150px;
         height: 400px;
         font-size: 15px;
-   }  
-   
-   
+   }
+
+
     .contenedor_page_btn button{
 
         width: 100px;
@@ -465,31 +478,31 @@ main{
         transition: box-shadow 0.3s ease;
 
     }
-   
+
 
 
 }
 
 
 @media screen and (max-width:480px) {
-    
+
    .contenedor_categorias ul{
     display: flex;
     flex-direction: column;
     width: 150px;
     height: 400px;
     font-size: 30px;
-   }    
+   }
 
 }
 
 @media screen and (max-width:400px){
-    
-  
-  
+
+
+
 
 }
 
- 
+
 
 </style>
