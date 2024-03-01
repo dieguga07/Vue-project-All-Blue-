@@ -1,6 +1,5 @@
 ![alt text](image-2.png)
 
-
 # Índice
 
 1. [Idea de la aplicación](#idea-de-la-aplicación)
@@ -37,6 +36,8 @@ Audiencia Objetivo:
 La plataforma está diseñada para atender a una amplia audiencia, abarcando usuarios de todas las edades y perfiles. Al no incluir productos exclusivos para mayores de 18 años, se busca llegar a un público diverso.Esta propuesta busca no solo ofrecer una experiencia de compra efectiva, sino también establecer una conexión más significativa entre los usuarios, promoviendo un ambiente interactivo y social en la plataforma.
 
 ## Guía de estilos
+[Enlace al Figma](https://www.figma.com/file/AKtjTzrGazoxUcZ97ScBey/Vue-project-1?type=design&node-id=1-7&mode=design&t=tGGIAE6cs8Phfv43-0)
+
 ![alt text](image-3.png)
 
 Resultado:
@@ -58,7 +59,35 @@ y por último esta es la misma versión pero con su modo oscuro:
 
 El resultado final ha sido este:
 
+Parte inicial:
 
+En esta parte encontraremos los formularios de registro , login y la página inicial.
+
+![alt text](image-9.png)
+
+![alt text](image-10.png)
+
+![alt text](image-11.png)
+
+Parte principal:
+
+Encontramos aquí la funcionalidad principal del proyecto en la que tenemos las peticiones a la API y sus distintos usos.
+
+![alt text](image-12.png)
+
+![alt text](image-13.png)
+
+![alt text](image-14.png)
+
+El apartado de usuario , el cual nos muestra información y permite administralo.
+
+![alt text](image-15.png)
+
+Contacto:
+
+Formulario de contacto con el responsable del proyecto.
+
+![alt text](image-16.png)
 
 ## Instalación del proyecto
 
@@ -74,13 +103,53 @@ Comparado con mi proyecto anterior, las dificultades encontradas fueron menores,
 
 Durante la fase de desarrollo, he atravesado varias etapas, algunas en las que todo fluía sin problemas, y otras en las que me enfrentaba a dificultades significativas. En ocasiones, incluso cuando todo parecía estar en orden, me encontraba con pequeños detalles, como olvidar un "this" o un punto y coma, lo que subraya la complejidad de este primer encuentro con un proyecto de cierta envergadura.
 
+
 ## Despliegue
 
-Explica cómo desplegar la aplicación en un entorno de producción.
+
+El despliegue ha sido un poco complicado, pero finalmente logré implementar la parte del frontend utilizando Vercel, mientras que la parte del backend se ejecuta localmente. Para poder utilizar la aplicación, todo lo que necesitas hacer es descargar el proyecto y ejecutar el siguiente comando en la terminal:
+
+[Repositorio Backend](https://github.com/dieguga07/Laravel-project-All-BLue)
+
+```sh 
+docker-compose up -d --build 
+
+```
+En caso de que esta opción no funcione, también puedes realizar una instalación manual del frontend descargando el proyecto y ejecutando los siguientes comandos:
+
+[Repositorio Frontend](https://github.com/dieguga07/Vue-project-All-Blue-)
+
+
+```sh
+npm install
+```
+
+Asegurate de tener las siguientes dependencias que se usan en el pryecto:
+
+[Pinia](https://pinia.vuejs.org/getting-started.html)
+[Vue router](https://router.vuejs.org/guide/)
+[Pinia-plugin-persist](https://www.npmjs.com/package/pinia-plugin-persist)
+
+###### Compile and Hot-Reload for Development
+
+```sh
+npm run dev
+```
+
+###### Compile and Minify for Production
+
+```sh
+npm run build
+```
+Estos pasos te permitirán poner en marcha la aplicación sin problemas.
+
+¡¡¡ Importante !!! Es posible que la respuesta tarde varios segundos debido al retraso en el despliegue del backend.
 
 ## Manual
 
-Proporciona un manual de usuario detallado para ayudar a los usuarios a familiarizarse y utilizar la aplicación.
+Para utilizar la aplicación, los usuarios deben iniciar sesión o registrarse. Una vez completado este paso, accederán a la parte principal de la aplicación, donde encontrarán un catálogo de productos con varios filtros disponibles y la opción de agregar elementos al carrito para realizar compras. Además, los usuarios tendrán acceso a una sección personalizada donde podrán ver y gestionar su información personal, incluida la posibilidad de eliminar su cuenta si así lo desean.
+
+[Video explicativo](https://drive.google.com/file/d/1WZNZZCCU2UYaVjy8ZLSseuqHp3U2glh1/view?usp=sharing) 
 
 ## Conclusiones
 
