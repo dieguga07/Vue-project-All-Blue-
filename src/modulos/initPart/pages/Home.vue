@@ -145,6 +145,7 @@ section{
   bottom: 0;
   z-index:-1;
   height:100%;
+  width: 60%;
  
 }
 
@@ -154,6 +155,7 @@ section{
   z-index: -3;
   left: 0;
   height:100%;
+  
 }
 
 .palo_deco_2{
@@ -162,6 +164,7 @@ section{
   z-index: -2;
   left: 4%;
   height:100%;
+  
 }
 
 .palo_deco_3{
@@ -170,9 +173,8 @@ section{
   z-index: -1;
   left:14%;
   height:100%;
+  
 }
-
-
 
 nav img {
   width: 150px;
@@ -188,11 +190,11 @@ nav ul {
     list-style: none;
     margin-right: 20px;
     font-size: 40px;
-   
 }
 
-nav ul li{
+nav ul li {
  padding-left: 20px;
+
 }
 
 .logo{
@@ -225,5 +227,61 @@ nav ul li{
 #login:hover{
   color: rgba(42, 161, 185, 1);
 }
+
+@media screen and (max-width:1150px) {
+  
+  nav img {
+  width: 100px;
+  height: 100px;
+  }
+
+  .cuadrado{
+    width: 60%;
+  }
+
+
+  }
+
+
+  @media screen and (max-width:700px) {
+  
+  nav img {
+  width: 100px;
+  height: 100px;
+  }
+
+  .cuadrado{
+    width: 60%;
+  }
+
+  nav ul li {
+    font-size: 20px;
+
+  }
+
+  }
+
+
+  @media screen and (max-width:400px) {
+  
+    nav img {
+      width: 80px;
+      height: 80px;
+    }
+
+    .cuadrado{
+      width: 60%;
+      
+    }
+
+    nav ul li {
+
+      padding-left: 10px;
+
+    }
+
+
+  }
+
 
 </style>

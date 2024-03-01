@@ -52,10 +52,7 @@ export default{
     border-radius: 25px;
 }
 
-@keyframes slide {
- 
 
-}
 
 @media screen and (max-width:400px){
     

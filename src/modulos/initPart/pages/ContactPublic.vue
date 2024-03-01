@@ -358,7 +358,7 @@ padding-top: 50px;
 
 .error-message {
     color: red;
-  }
+}
 
   .accept-message {
     color: green;
