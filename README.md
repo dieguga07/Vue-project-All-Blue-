@@ -13,6 +13,7 @@ Para utilizar la aplicación, los usuarios deben iniciar sesión o registrarse. 
 
 ## Despliegue
 
+[Enalce al despliegue](https://vue-project-all-blue.vercel.app/)
 
 El despliegue ha sido un poco complicado, pero finalmente logré implementar la parte del frontend utilizando Vercel, mientras que la parte del backend se ejecuta localmente. Para poder utilizar la aplicación, todo lo que necesitas hacer es descargar el proyecto y ejecutar el siguiente comando en la terminal:
 
