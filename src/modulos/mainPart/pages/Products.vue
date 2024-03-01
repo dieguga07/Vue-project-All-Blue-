@@ -5,6 +5,7 @@ import Footer from "../components/Footer.vue"
 import Carrusel from "../components/Carrusel.vue"
 import Cart from "../components/Cart.vue"
 import { DarkMode } from "@/stores/DarkMode"
+import { UserContext } from "@/stores/UserContext"
 
 
 export default{
@@ -15,17 +16,23 @@ data() {
     return {
         products: [],
         loader:true,
-        cartProducts : [],
+        cartProducts: Array,
         page:1,
         lastPage:false,
         url:`http://localhost:8000/api/products?page=${this.page}`,
         category: "main",
         userSearch:"",
-        dark:DarkMode()
+        dark:DarkMode(),
+        showModal:false
     }
 },
 mounted(){
     this.getProducts(this.url)
+},
+
+created() {
+    const userStore =UserContext()
+    this.cartProducts = userStore.cart 
 },
 
 methods:{
@@ -59,10 +66,19 @@ methods:{
 
             if(!this.cartProducts.some(Newproduct => Newproduct.Pid === product.Pid)){
                 this.cartProducts.push(product)
+                this.updateLocalStorageCart()
+                this.openModal()
             }
 
 
         },
+
+        updateLocalStorageCart(){
+            const userStore = UserContext()
+            userStore.cart = this.cartProducts
+        },
+
+
 
         vaciarCart(){
 
@@ -72,6 +88,7 @@ methods:{
 
         deleteProduct(deleteId){
         this.cartProducts = this.cartProducts.filter((product) => product.Pid !== deleteId)
+        this.updateLocalStorageCart()
         },
 
         async nextPage(category) {
@@ -150,6 +167,14 @@ methods:{
                 this.products = []
             }
         }, 
+
+        openModal() {
+            this.showModal = true
+            
+            this.timer = setTimeout(() => {
+                this.showModal = false
+            }, 2000); 
+        },
     },
 
     watch: {
@@ -160,7 +185,6 @@ methods:{
 
 
   },
-
 
 }
 
@@ -175,19 +199,24 @@ methods:{
     <Carrusel></Carrusel>
 
 
-
     <section class="contenedor_buscador">
+
       <form>
+
         <div class="search-container">
-          <img src="../../../assets/images/lupa.png" alt="search" class="contenedor_buscador_img">
-          <input v-model="userSearch"  @keyup.enter="searchProducts" type="search" placeholder=" Search....">
+
+            <img src="../../../assets/images/lupa.png" alt="search" class="contenedor_buscador_img">
+            <label for="search" class="hidden_label">Search</label>
+            <input v-model="userSearch" @keyup.enter="searchProducts" type="search" id="search" name="search" placeholder=" Search....">
         </div>
+
       </form>
+
     </section>
 
 
 
-    <section class="contenedor_categorias">
+    <section class="contenedor_categorias" :class="{ 'dark_mode_categories': dark.dark  }">
         <ul>
             <li><a @click="allProducts" :class="{ 'products_selection': category === 'main' }" > All Products</a></li>
             <li><a @click="furnituresCategory" :class="{ 'products_selection': category === 'furnitures' }" >Furniture</a> </li>
@@ -210,9 +239,14 @@ methods:{
     </form>
 
 
+   
+        <div class="info-message" v-if="showModal">
+            <p>Product added to cart!</p>
+        </div>
+
     <section class="contenedor-cards" >
 
-        <div class="card" :class="{ 'dark': dark.dark  }" v-for="product in products" :key="product.id">
+        <div class="card" :class="{ 'dark_mode': dark.dark  }" v-for="product in products" :key="product.id">
 
             <img class="card-img" :class="{ 'dark': dark.dark  }" :src="product.image ? product.image  : 'https://cdn.icon-icons.com/icons2/3001/PNG/512/default_filetype_file_empty_document_icon_187718.png'" :alt="product.name">
             <!-- <p class="card-img-back">{{ product.description }}</p> -->
@@ -222,7 +256,9 @@ methods:{
             </div>
             <div class="card-btn" :class="{ 'dark': dark.dark  }">
                 <p>{{ product.price }} €</p>
-                <a @click="addFavourite(product.name,product.price,product.image,product.id)"> <img src="../../../assets/images/add.png" alt="Add to cart"></a>
+
+                <a v-if="!dark.dark" @click="addFavourite(product.name,product.price,product.image,product.id)"> <img src="../../../assets/images/add.png" alt="Add to cart"></a>
+                <a v-if="dark.dark" @click="addFavourite(product.name,product.price,product.image,product.id)"> <img src="../../../assets/images/add_white.png" alt="Add to cart"></a>
             </div>
         </div>
 
@@ -244,30 +280,50 @@ methods:{
 
 @import url('https://fonts.cdnfonts.com/css/sansation');
 
+.hidden_label{
+    user-select: none;
+    color: transparent;
+}
+
 main{
     background-color:rgba(197, 176, 149, 1);
     font-family: "Montagu Slab", serif;
 
 }
-
 .dark_mode {
     background-color:rgba(42, 44, 42, 1);
     font-family: "Montagu Slab", serif;
     color: white;
 }
 
+.dark_mode .card  {
+    background-color:rgba(63, 62, 62, 1);
+}
+
 .dark{
     background-color:  rgba(63, 62, 62, 1);
+    border:none;
 }
 
-.products_selection{
-    padding-bottom: 5px;
-    border-bottom: solid black 1px;
+.info-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(42, 161, 185, 0.9);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 2;
 }
 
+.info-message p {
+  margin: 0;
+  font-size: 18px;
+}
 
 .contenedor_page_btn{
-
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -275,7 +331,6 @@ main{
 }
 
 .contenedor_page_btn button{
-
    width: 10vw;
    height: 5vh;
    border-radius: 25px;
@@ -283,13 +338,11 @@ main{
    background-color: rgba(42, 161, 185, 1);
    box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
    transition: box-shadow 0.3s ease;
-
 }
 
 
 .contenedor_page_btn button:hover{
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-
 }
 
 
@@ -309,13 +362,12 @@ main{
 
   .search-container {
     position: relative;
-
   }
 
   .contenedor_buscador_img {
     position: absolute;
     top: 50%;
-    left: 10px;
+    left: 75px;
     transform: translateY(-50%);
     width: 20px;
     height: 20px;
@@ -365,7 +417,6 @@ main{
     padding: 20px;
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
-
 }
 
 .card-img-back{
@@ -385,7 +436,6 @@ main{
     font-size:20px;
     width: 100%;
     height: 20%;
-
 }
 
 
@@ -398,7 +448,6 @@ main{
     border-bottom-left-radius: 50px;
     border-bottom-right-radius: 50px;
     font-size: 25px;
-
 }
 
 .card-btn img{
@@ -406,7 +455,6 @@ main{
     height: 40px;
     cursor: pointer;
     transition:transform 0.2s;
-
 }
 
 .card-btn img:hover{
@@ -435,9 +483,22 @@ main{
     font-size: 20px;
     height: 100px;
     margin:  0 auto;
-
 }
 
+.products_selection{
+    padding-bottom: 5px;
+    border-bottom: solid black 1px;
+}
+
+.dark_mode_categories ul{
+    border-top: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+}
+
+.dark_mode_categories .products_selection{
+    padding-bottom: 5px;
+    border-bottom: solid rgb(255, 255, 255) 1px;
+}
 .contenedor_categorias a{
     cursor: pointer;
 }
@@ -446,11 +507,11 @@ main{
 @media screen and (max-width:1050px) {
     .contenedor_categorias ul{
     display: flex;
-
     width: 615px;
     height: 100px;
     font-size: 15px;
    }
+
 }
 
 
@@ -468,7 +529,6 @@ main{
 
 
     .contenedor_page_btn button{
-
         width: 100px;
         height: 40px;
         border-radius: 25px;
@@ -476,7 +536,6 @@ main{
         background-color: rgba(42, 161, 185, 1);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
         transition: box-shadow 0.3s ease;
-
     }
 
 

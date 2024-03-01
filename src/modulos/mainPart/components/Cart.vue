@@ -11,7 +11,7 @@ export default {
       return {
          compraState:false,
          cartState:false,
-         buyState:false
+         
       }
    },
 
@@ -19,9 +19,9 @@ export default {
 
       compraUser(){
          this.$emit('vaciarCart')
-         this.buyState = true
+         this.compraState = true
           setTimeout(() => {
-            this.buyState = false
+            this.compraState = false
             }, 10000)
 
       },
@@ -85,7 +85,7 @@ export default {
    <section :class="cartState ? 'contenedor-cart2_open' : 'contenedor-cart2'">
 
       
-      <div v-if="buyState" class="purchase-message">
+      <div v-if="compraState" class="purchase-message">
 
       <p>Purchase has been successfully completed.</p>
 
@@ -223,8 +223,6 @@ div{
    list-style: none;
    padding: 2%;
    
-   
-
 }
 
 .cart ul li{
@@ -352,12 +350,8 @@ div{
    height:1px;
   }
   
+}
   
-  
-  }
-  
-
-
 
 
 </style>

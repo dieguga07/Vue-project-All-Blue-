@@ -19,6 +19,16 @@ export const DarkMode = defineStore ("darkMode",{
 
       },
 
+      persist: {
+        enabled:true,
+        strategies:[
+          {
+            key:"dark",
+            storage: localStorage,
+          },
+         
+        ]
+      }
 
 })
 

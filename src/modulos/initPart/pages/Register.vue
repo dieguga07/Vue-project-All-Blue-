@@ -165,7 +165,6 @@ watch: {
 
 },
 
-
 }
 
 </script>
@@ -176,31 +175,30 @@ watch: {
 <section class="contendor-register">
 
     <form class="register-form">
-        <p class="register-title">Sing up</p>
+      <fieldset>
+        <h1 class="register-title">Sing up</h1>
         
         <div class="register-input">
 
             <span class="error-message"> {{ responseFail }} </span>
 
             <label for="user" class="register-label">User</label>
-            <input v-model="user"  type="text" id="user" name="user" required placeholder="User">
+            <input v-model="user"  type="text" id="user" name="user" required placeholder="Username">
             <span :class=" validUser ? 'accept-message' : 'error-message' ">{{ userMessage }}</span>
             
-            <label for="user" class="register-label">Email</label>
-            <input v-model="email"  type="text" id="email" name="user" required placeholder="email@gmail.com">
+            <label for="email" class="register-label">Email</label>
+            <input v-model="email"  type="text" id="email" name="email" required placeholder="Email@gmail.com">
             <span :class=" validEmail ? 'accept-message' : 'error-message' ">{{ emailMessage }}</span>
             
-            <label for="user" class="register-label">Phone</label>
-            <input v-model="phone"  type="text" id="phone" name="user" required placeholder="60012356">
+            <label for="phone" class="register-label">Phone</label>
+            <input v-model="phone"  type="text" id="phone" name="phone" required placeholder="600123567">
             <span :class=" validPhone ? 'accept-message' : 'error-message' ">{{ phoneMessage }}</span>
             
             <label for="password" class="register-label">Password</label>
-            <input v-model="password"  type="password" id="password" name="password" autocomplete="current-password" required >
+            <input v-model="password"  type="password" id="password" name="password" autocomplete="current-password" required placeholder="Password" >
             <span  :class=" validPassword ? 'accept-message' : 'error-message' " >{{  passwordMessage }}</span>
             
-          
         </div>
-
 
         <div class="boton-texto">
             <button @click="sendForm">Get started</button>
@@ -208,6 +206,7 @@ watch: {
             <p class="register-end">Already have an account ? <router-link to="/public/login" class="nav-link" id="registro">Log in now</router-link></p>
         </div>
             
+      </fieldset>
 
     </form>
 
@@ -340,6 +339,10 @@ watch: {
     padding: 0 auto;
 }
 
+fieldset {
+  border: none; 
+}
+
   .contendor-register {
     font-family: "Montagu Slab", serif;
     display: flex;
@@ -364,6 +367,7 @@ watch: {
   text-align: center;
   padding-bottom: 5px;
   background-color: rgb(255, 255, 255);
+ 
 }
 
 

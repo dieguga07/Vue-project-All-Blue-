@@ -12,11 +12,9 @@ export default{
         }
     },
     methods: {
-    toggleDarkMode() {
-      // Invierte el valor del modo oscuro
+    changeMode() {
       this.dark = !this.dark;
-      // Llama al método `setDarkMode` del almacenamiento de Pinia para actualizar el estado
-      DarkMode().setDarkMode(this.dark);
+      DarkMode().setDarkMode(this.dark)
     }
   }
 
@@ -41,13 +39,14 @@ export default{
             <li><router-link  @click="userStore.setUser(false)"   to="/public" class="nav-link">Logout</router-link></li>
         </ul>
 
-        <ul class="clasic_ul">
-            <li @click="toggleDarkMode" id="luna"><a><img src="../../../assets/images/luna.png" alt="Cambiar modo" title="Cambiar modo"  class="clasic_img" ></a></li>
+        <ul class="clasic_ul" v-if="!dark">
+            <li @click="changeMode" id="luna"><a><img src="../../../assets/images/luna.png" alt="Cambiar modo" title="Cambiar modo" class="clasic_img"></a></li>
         </ul>
 
+        <ul class="clasic_ul" v-if="dark">
+            <li @click="changeMode" id="sol"><a><img src="../../../assets/images/sol.png" alt="Cambiar modo" title="Cambiar modo" class="clasic_img"></a></li>
+        </ul>
     </nav> 
-
-
   
 
 </header>
@@ -57,7 +56,13 @@ export default{
 
 <style scoped> 
 
+@import url('https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&display=swap');
 
+@import url('https://fonts.cdnfonts.com/css/sansation');
+
+.header{
+    font-family: "Montagu Slab", serif;
+}
 .clasic_nav {
     font-size: 20px;
     display: flex;

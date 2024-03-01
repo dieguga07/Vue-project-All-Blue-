@@ -10,8 +10,8 @@ export const UserContext = defineStore('userState',{
         nombre:"",
         email:"",
         phone:"",
-        password:""
-
+        password:"",
+        cart:[]
 
     }),
 
@@ -46,9 +46,10 @@ export const UserContext = defineStore('userState',{
         enabled:true,
         strategies:[
           {
-            key:"auth",
+            key:"user",
             storage: localStorage,
-          }
+          },
+         
         ]
       }
 

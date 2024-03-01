@@ -92,7 +92,8 @@ watch:{
     <section class="contendor-contact">
 
         <form class="contact-form">
-            <p class="contact-title">Contact us</p>
+          <fieldset>
+            <h1 class="contact-title">Contact us</h1>
 
             <div class="contact-input">
 
@@ -110,12 +111,9 @@ watch:{
             </div>
             
             <button @click="sendForm">Enviar</button>
-
-           
-            
-            
             <p class="contact-end"><router-link to="/public" class="nav-link" id="registro">Go back</router-link></p>
 
+          </fieldset>
         </form>
 
     </section>
@@ -249,6 +247,9 @@ watch:{
   top: 0;
 }
 
+fieldset {
+  border: none; 
+}
   .toast-container {
   z-index: 1;
   position: fixed;

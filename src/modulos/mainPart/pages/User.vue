@@ -140,6 +140,7 @@ section{
 .user_part img{
     width: 150px;
     height: 150px;
+    border-radius: 100px;
 }
 
 .user_part_information{
@@ -154,7 +155,7 @@ section{
     }
 
     .user_part_information{
-     font-size: 15px; 
+     font-size: 20px; 
     }
 
  }
@@ -174,9 +175,9 @@ section{
 
 
     .user_delete{
-    font-size: 15px;
-    top: 15vh;
-    padding-left: 0px;
+    font-size: 10px;
+    top: 17vh;
+    padding-left: 5px;
     
 }
 

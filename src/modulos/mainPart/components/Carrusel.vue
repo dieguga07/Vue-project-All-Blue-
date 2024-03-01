@@ -36,8 +36,6 @@ export default{
 }
 
 .carrusel{
-  
-    
     width: 100%;
 }
 

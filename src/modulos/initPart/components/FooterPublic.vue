@@ -57,7 +57,7 @@ export default{
 
 footer{
     width: 100%;
-    background-color: rgba(197, 176, 149, 1); 
+    background-color: rgba(197, 176, 149, 1);
     color: rgb(0, 0, 0);
     border-top: 1px solid #000000; 
     border-bottom: none; 

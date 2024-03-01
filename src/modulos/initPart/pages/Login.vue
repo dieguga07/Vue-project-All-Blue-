@@ -115,7 +115,10 @@ export default{
     <section class="contendor-login">
 
         <form class="login-form">
-            <p class="login-title">Login</p>
+
+           <fieldset>
+            
+            <h1 class="login-title">Login</h1>
 
             <article class="login-input">
                 <span class="error-message">{{ responseFail }}</span>
@@ -137,6 +140,7 @@ export default{
             
             <p class="login-end">Not a member yet? <router-link to="/public/register" class="nav-link" id="login">Sign up now</router-link></p>
 
+          </fieldset> 
         </form>
         
     </section>
@@ -244,6 +248,9 @@ export default{
   top: 0;
 }
 
+fieldset {
+  border: none; 
+}
 .banda2{
   
   height: 100vh;
@@ -271,9 +278,6 @@ export default{
     height: 100vh;
 
   }
-
-
-
 
   .login-title{
     font-size: 5.5vh;
