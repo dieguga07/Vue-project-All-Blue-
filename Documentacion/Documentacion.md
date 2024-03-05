@@ -168,6 +168,8 @@ Para utilizar la aplicación, los usuarios deben iniciar sesión o registrarse. 
 
 En lo que respecta al contenido sobre accesibilidad, aparentemente todo está en orden, aunque se observan algunos pequeños fallos que pueden ser justificados. Estos pueden ser corregidos utilizando la paleta de colores de manera más coherente y procurando ajustarse a ella en la medida de lo posible. Asimismo, algunos elementos podrían pasar desapercibidos al estar ubicados detrás de una imagen que sirve de fondo, como sucede en la sección del usuario, donde el botón de eliminar cuenta podría no ser tan visible como se desearía.
 
+En cuanto al resto, considero que está bastante bien; sin embargo, siempre existe margen para mejorar y hacer las cosas más accesibles.
+
 ## Conclusiones
 
 Este proyecto ha representado un hito significativo en mi aprendizaje, marcando una notable brecha entre mis conocimientos previos y lo que he adquirido a lo largo del proceso. Observar la evolución que he experimentado me llena de orgullo por los logros alcanzados hasta el momento, aunque reconozco que siempre hay margen para la mejora continua.
