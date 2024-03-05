@@ -21,9 +21,9 @@ export default{
 
                 <h1 class="animacion">Oops !</h1>
 
-                <img src="../../../assets/images/NotFound.png"> 
+                <img src="../../../assets/images/NotFound.png" alt="NotFound image"> 
 
-                <p >Page not found . <router-link to="/public" class="nav-link">Go Home</router-link></p>
+                <p> Page not found . <router-link to="/public" class="nav-link">Go Home</router-link></p>
 
             </article>
 
