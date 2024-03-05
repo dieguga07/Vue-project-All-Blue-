@@ -153,11 +153,20 @@ Para utilizar la aplicación, los usuarios deben iniciar sesión o registrarse. 
 [Video explicativo](https://drive.google.com/file/d/1WZNZZCCU2UYaVjy8ZLSseuqHp3U2glh1/view?usp=sharing) 
 
 ## Accesibilidad
+
 ![image](https://github.com/dieguga07/Vue-project-All-Blue-/assets/120743511/ad70d194-d22b-4692-a7e1-30580cd8325f)
 
 ![image](https://github.com/dieguga07/Vue-project-All-Blue-/assets/120743511/0fb300ff-ef87-4d02-aa75-f1cb28f82b5f)
 
+![image](https://github.com/dieguga07/Vue-project-All-Blue-/assets/120743511/bc7d39db-9342-41ff-9298-abc2cbdf4e07)
 
+![image](https://github.com/dieguga07/Vue-project-All-Blue-/assets/120743511/ee37a799-0ca3-496d-83fd-836a624b3f06)
+
+![image](https://github.com/dieguga07/Vue-project-All-Blue-/assets/120743511/9da5e0ff-b2a2-427a-ab82-3fb36ceebe55)
+
+![image](https://github.com/dieguga07/Vue-project-All-Blue-/assets/120743511/0fc7527b-2055-4e80-92b4-1643d72adc80)
+
+En lo que respecta al contenido sobre accesibilidad, aparentemente todo está en orden, aunque se observan algunos pequeños fallos que pueden ser justificados. Estos pueden ser corregidos utilizando la paleta de colores de manera más coherente y procurando ajustarse a ella en la medida de lo posible. Asimismo, algunos elementos podrían pasar desapercibidos al estar ubicados detrás de una imagen que sirve de fondo, como sucede en la sección del usuario, donde el botón de eliminar cuenta podría no ser tan visible como se desearía.
 
 ## Conclusiones
 
