@@ -10,7 +10,8 @@
 6. [Desarrollo](#desarrollo)
 7. [Despliegue](#despliegue)
 8. [Manual](#manual)
-9. [Conclusiones](#conclusiones)
+9. [Accesibilidad](#manual)
+10. [Conclusiones](#conclusiones)
 
 ## Idea de la aplicación
 
@@ -150,6 +151,13 @@ Estos pasos te permitirán poner en marcha la aplicación sin problemas.
 Para utilizar la aplicación, los usuarios deben iniciar sesión o registrarse. Una vez completado este paso, accederán a la parte principal de la aplicación, donde encontrarán un catálogo de productos con varios filtros disponibles y la opción de agregar elementos al carrito para realizar compras. Además, los usuarios tendrán acceso a una sección personalizada donde podrán ver y gestionar su información personal, incluida la posibilidad de eliminar su cuenta si así lo desean.
 
 [Video explicativo](https://drive.google.com/file/d/1WZNZZCCU2UYaVjy8ZLSseuqHp3U2glh1/view?usp=sharing) 
+
+## Accesibilidad
+![image](https://github.com/dieguga07/Vue-project-All-Blue-/assets/120743511/ad70d194-d22b-4692-a7e1-30580cd8325f)
+
+![image](https://github.com/dieguga07/Vue-project-All-Blue-/assets/120743511/0fb300ff-ef87-4d02-aa75-f1cb28f82b5f)
+
+
 
 ## Conclusiones
 
